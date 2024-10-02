@@ -10,13 +10,13 @@ CREATE TABLE usuarios(
     adm BOOLEAN NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     genero  ENUM('M', 'F', 'O') NOT NULL,
-    cpf VARCHAR(11) NOT NULL,
+    cpf VARCHAR(11) UNIQUE NOT NULL,
     nascimento DATE NOT NULL,
     escolaridade ENUM('f1', 'f2', 'em') NULL,
     cep VARCHAR(8) NOT NULL,
     bairro VARCHAR(255) NULL,
     municipio VARCHAR(255) NOT NULL,
-    escola VARCHAR(255) NOT NULL,
+    escola VARCHAR(255) NULL,
     uf CHAR(2) NOT NULL
  );
 
