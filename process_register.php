@@ -26,12 +26,12 @@ if($executa_insert){
     session_destroy();
     echo "<script>
     alert('Usuário cadastrado com sucesso');
-    window.location.href = '../login.php';
+    window.location.href = 'login_teste.php';
     </script>";
 }else{
     echo "<script>
     alert('Erro ao cadastrar usuário');
-    window.location.href = '../cadastro1.php';
+    window.location.href = 'cadastro_teste.php';
     </script>";
 }
 ?>
