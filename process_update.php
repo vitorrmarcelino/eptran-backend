@@ -6,7 +6,7 @@ include("dbconnect.php");
 //variáveis
 $id = $_SESSION['userdata']['id'];
 $nome = $_POST['nome'];
-$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+$senha = $_POST['senha'];
 $email = $_POST['email'];
 $genero = $_POST['genero'];
 $cpf = $_POST['cpf'];
@@ -31,7 +31,7 @@ $query = "UPDATE usuarios SET";
           $query = $query . " email = '$email',";
      }
      if($senha){
-          $query = $query . " senha = '$senha',";
+          $query = $query . " senha = '". password_hash($senha, PASSWORD_DEFAULT) . "',";
      }
      if($genero){
         $query = $query . " genero = '$genero',";
@@ -58,7 +58,7 @@ $query = "UPDATE usuarios SET";
           $query = $query . " escola = '$escola',";
      }
      if($uf){
-          $query = $query . " escola = '$uf',";
+          $query = $query . " uf = '$uf',";
      }
 
      //Tira a vírgula do último texto de update
@@ -69,16 +69,23 @@ $query = "UPDATE usuarios SET";
      //Executa update
      $executa_update = mysqli_query($conn, $query);
      if($executa_update){
-          echo "<script>
-          alert('Usuário atualizado com sucesso');
-          window.location.href = 'teste_tela_de_edicao.php';
-          </script>";
-
-     }else{
-          echo "<script>
-          alert('Erro ao atualizar usuário');
-          window.location.href = 'teste_tela_de_edicao.php';
-          </script>";
+         // Busca os dados atualizados
+         $querySelect = "SELECT * FROM usuarios WHERE id = $id";
+         $result = mysqli_query($conn, $querySelect);
+     
+         if($result && mysqli_num_rows($result) > 0){
+             $userdata = mysqli_fetch_assoc($result);
+             $_SESSION['userdata'] = $userdata; // Atualiza a sessão com todos os dados
+     
+             echo "<script>
+             alert('Usuário atualizado com sucesso');
+             window.location.href = 'teste_tela_de_edicao.php';
+             </script>";
+         } else {
+             echo "<script>
+             alert('Erro ao recuperar dados do usuário');
+             window.location.href = 'teste_tela_de_edicao.php';
+             </script>";
+         }
      }
-
 ?>
