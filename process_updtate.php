@@ -1,8 +1,6 @@
 <?php 
-
+include("login_required");
 include("dbconnect.php");
-
-session_start();
 
 //variáveis
 $id = $_SESSION['userdata']['id']
