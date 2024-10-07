@@ -29,8 +29,6 @@ try {
     
     $data["success"] = true;
     $data["message"] = "Usuário cadastrado com sucesso.";
-
-
 } catch (Exception $err) {
     $data["success"] = false;
     if ($err->getCode() == 1062) {
