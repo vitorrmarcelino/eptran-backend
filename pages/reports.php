@@ -1,10 +1,11 @@
+<?php include "../auth/adm_required.php"; ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Relátorios</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
     th,
@@ -41,8 +42,8 @@
                 <option value="pr">PR</option>
             </select>
         </label>
-        <label for="cidade">Cidade
-            <select id="cidade" name="cidade">
+        <label for="municipio">Município
+            <select id="municipio" name="municipio">
                 <option value="">Qualquer</option>
                 <option value="Joinville">Joinville</option>
                 <option value="Curitiba">Curitiba</option>
@@ -91,6 +92,16 @@
             <th id="count">Nº de Usuários</th>
         </tr>
     </table>
+
+
+    <br>
+    <br>
+
+    <a href="..">
+        <button>Início</button>
+    </a>
+
+
     <script>
     $(document).ready(() => {
         $("form").submit((event) => {
@@ -98,7 +109,7 @@
                 genero: $("#genero").val(),
                 escolaridade: $("#escolaridade").val(),
                 uf: $("#uf").val(),
-                cidade: $("#cidade").val(),
+                municipio: $("#municipio").val(),
                 bairro: $("#bairro").val(),
                 escola: $("#escola").val(),
                 periodoInicial: $("#periodoInicial").val(),
@@ -114,18 +125,38 @@
 
             $.ajax({
                 type: "POST",
-                url: "gerar_relatorio.php",
+                url: "../process/get_report.php",
                 data: formData,
                 dataType: "json",
                 encode: true,
-            }).done(function(data) {
-                data.forEach((row) => {
-                    $("table tbody").append(`
+            }).done(({
+                success,
+                message,
+                users
+            }) => {
+                if (success) {
+                    if (users.length < 1) {
+                        $("table tbody").html(`
+                    <tr>
+                        <td>Nenhum usuário encontrado</td>
+                    </tr>`);
+                    } else {
+                        users.forEach((row) => {
+                            $("table tbody").append(`
                     <tr>
                         <td>${row.label}</td>
                         <td>${row.count}</td>
                     </tr>`);
-                });
+                        });
+                    }
+
+                    return;
+                }
+
+                $("table tbody").html(`
+                    <tr>
+                        <td>Erro ao buscar usuários, tente novamente.</td>
+                    </tr>`);
             });
 
             event.preventDefault();

@@ -1,5 +1,5 @@
 <?php
-include "dbconnect.php";
+include "../db/dbconnect.php";
 
 session_start();
 
@@ -10,14 +10,18 @@ $query = 'SELECT * FROM usuarios WHERE email = \'' . $email . '\'';
 $result = mysqli_query($conn, $query);
 $userdata = mysqli_fetch_array($result);
 
+$data = [];
+
 if (password_verify($password, $userdata['senha'])) {
     $_SESSION['userdata'] = $userdata;
-    header('location:tela_inicial.php');
+    $data["success"] = true;
+    $data["message"] = "Login efetuado com sucesso.";
 } else {
     unset ($_SESSION['userdata']);
-    echo "<script>
-            alert('Credenciais inválidas!');
-            window.location.href = 'login.php';
-        </script>";
-    exit;
+    $data["success"] = false;
+    $data["message"] = "Credenciais inválidas.";
 }
+
+echo json_encode($data);
+
+?>
