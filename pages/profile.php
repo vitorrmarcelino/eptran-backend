@@ -12,12 +12,12 @@
 <body>
 
     <p>Olá,
-        <?php session_start(); echo $_SESSION['userdata']['nome'];?>
+        <?php echo $_SESSION['userdata']['nome'];?>
     </p>
 
     <img src="../<?php echo $_SESSION['userdata']['imagem_url'] ?>" alt="foto">
     <a href="./img_upload.php">
-        <button>Início</button>
+        <button>Alterar imagem</button>
     </a>
     <br>
 
@@ -138,7 +138,6 @@
                 senha: $("#senha").val(),
                 email: $("#email").val(),
                 genero: $("#genero").val(),
-                cpf: $("#cpf").val(),
                 nascimento: $("#nascimento").val(),
                 escolaridade: $("#escolaridade").val(),
                 cep: $("#cep").val(),

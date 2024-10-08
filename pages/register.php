@@ -13,13 +13,13 @@
     <h1>Formulário de Registro</h1>
     <form>
         <label for="nome" required>Nome:</label>
-        <input value="1" type="text" id="nome" name="nome" required><br><br>
+        <input type="text" id="nome" name="nome" required><br><br>
 
         <label for="senha" required>Senha:</label>
-        <input value="1" type="password" id="senha" name="senha" required><br><br>
+        <input type="password" id="senha" name="senha" required><br><br>
 
         <label for="email" required>Email:</label>
-        <input value="1@1" type="email" id="email" name="email" required><br><br>
+        <input type="email" id="email" name="email" required><br><br>
 
         <label for="genero" required>Gênero:</label>
         <select id="genero" name="genero">
@@ -28,11 +28,8 @@
             <option value="O">Outro</option>
         </select><br><br>
 
-        <label for="cpf" required>CPF:</label>
-        <input value="1" type="text" id="cpf" name="cpf" required><br><br>
-
         <label for="nascimento" required>Data de Nascimento:</label>
-        <input value="1111-11-11" type="date" id="nascimento" name="nascimento" required><br><br>
+        <input type="date" id="nascimento" name="nascimento" required><br><br>
 
         <label for="escolaridade">Escolaridade:</label>
         <select id="escolaridade" name="escolaridade">
@@ -43,16 +40,16 @@
         </select><br><br>
 
         <label for="cep" required>CEP:</label>
-        <input value="1" type="text" id="cep" name="cep" required><br><br>
+        <input type="text" id="cep" name="cep" required><br><br>
 
         <label for="bairro" required>Bairro:</label>
-        <input value="1" type="text" id="bairro" name="bairro" required><br><br>
+        <input type="text" id="bairro" name="bairro" required><br><br>
 
         <label for="municipio" required>Município:</label>
-        <input value="1" type="text" id="municipio" name="municipio" required><br><br>
+        <input type="text" id="municipio" name="municipio" required><br><br>
 
         <label for="escola">Escola:</label>
-        <input value="1" type="text" id="escola" name="escola"><br><br>
+        <input type="text" id="escola" name="escola"><br><br>
 
         <label for="uf" required>Estado (UF):</label>
         <select id="uf" name="uf" required>
@@ -110,7 +107,6 @@
                 senha: $("#senha").val(),
                 email: $("#email").val(),
                 genero: $("#genero").val(),
-                cpf: $("#cpf").val(),
                 nascimento: $("#nascimento").val(),
                 escolaridade: $("#escolaridade").val(),
                 cep: $("#cep").val(),

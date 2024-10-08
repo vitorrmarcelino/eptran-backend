@@ -10,7 +10,6 @@ CREATE TABLE usuarios(
     adm BOOLEAN DEFAULT FALSE,
     email VARCHAR(255) UNIQUE NOT NULL,
     genero  ENUM('M', 'F', 'O') NOT NULL,
-    cpf VARCHAR(11) UNIQUE NOT NULL,
     nascimento DATE NOT NULL,
     escolaridade ENUM('f1', 'f2', 'em') NULL,
     cep VARCHAR(8) NOT NULL,
