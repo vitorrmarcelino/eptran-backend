@@ -1,0 +1,48 @@
+<?php
+include "dbconnect.php";
+
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
+    
+    // Certifique-se de que o usuário está autenticado, caso contário
+    // if (!isset($_SESSION['user_id'])) {
+    //     echo "<script>alert('Você precisa estar logado para excluir sua conta.'); window.location.href = '../login.php';</script>";
+    //     exit();
+    // }
+
+    $email = $_POST['email'];
+
+    $query = "DELETE FROM usuarios WHERE email = '$email'";
+
+    $executa_delete = mysqli_query($conn, $query);
+
+    if ($executa_delete) {
+        // Opcional: Destruir a sessão se o usuário for excluído
+        session_unset();
+        session_destroy();
+        echo "<script>
+        alert('Usuário excluído com sucesso');
+        window.location.href = '../login.php';
+        </script>";
+    } else {
+        echo "<script>
+        alert('Erro ao excluir usuário');
+        window.location.href = '../perfil.php'; // Altere para a página desejada
+        </script>";
+    }
+} else {
+    echo "<script>alert('Método de requisição inválido.'); window.location.href = '../perfil.php';</script>";
+}
+?>
+
+<?php
+/*HTML:
+<form action="excluir_usuario.php" method="POST">
+    <h3>Excluir Conta</h3>
+    <p>Digite seu email para confirmar a exclusão da conta:</p>
+    <input type="email" name="email" required>
+    <button type="submit">Excluir Conta</button>
+</form>
+*/
+?>
