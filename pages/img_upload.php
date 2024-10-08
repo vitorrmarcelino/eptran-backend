@@ -41,7 +41,11 @@
                 success,
                 message
             }) => {
-                console.log(message)
+                alert(message);
+
+                if (success) {
+                    window.location.href = "./profile.php";
+                }
             })
 
             event.preventDefault();
