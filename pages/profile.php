@@ -13,6 +13,7 @@
 
     <p>Olá,
         <?php echo $_SESSION['userdata']['nome'];?>
+        <?php echo $_SESSION['userdata']['nome'];?>
     </p>
 
     <img src="../<?php echo $_SESSION['userdata']['imagem_url'] ?>" alt="foto">
