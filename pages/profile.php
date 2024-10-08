@@ -58,9 +58,6 @@
             <option value="O">Outro</option>
         </select><br><br>
 
-        <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" name="cpf"><br><br>
-
         <label for="nascimento">Data de Nascimento:</label>
         <input type="date" id="nascimento" name="nascimento" value=""><br><br>
 

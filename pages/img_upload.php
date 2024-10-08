@@ -15,7 +15,6 @@
         <h1>Upload de Imagem</h1>
         <label for="arquivo">Escolha uma imagem:</label>
         <input type="file" id="arquivo" name="arquivo" accept="image/*" required>
-        <input type="file" id="arquivo" name="arquivo" accept="image/*" required>
         <br><br>
         <input type="submit" value="Carregar Imagem">
     </form>

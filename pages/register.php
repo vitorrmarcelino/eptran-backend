@@ -14,14 +14,11 @@
     <form>
         <label for="nome" required>Nome:</label>
         <input type="text" id="nome" name="nome" required><br><br>
-        <input type="text" id="nome" name="nome" required><br><br>
 
         <label for="senha" required>Senha:</label>
         <input type="password" id="senha" name="senha" required><br><br>
-        <input type="password" id="senha" name="senha" required><br><br>
 
         <label for="email" required>Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
         <input type="email" id="email" name="email" required><br><br>
 
         <label for="genero" required>Gênero:</label>
@@ -32,7 +29,6 @@
         </select><br><br>
 
         <label for="nascimento" required>Data de Nascimento:</label>
-        <input type="date" id="nascimento" name="nascimento" required><br><br>
         <input type="date" id="nascimento" name="nascimento" required><br><br>
 
         <label for="escolaridade">Escolaridade:</label>
@@ -45,18 +41,14 @@
 
         <label for="cep" required>CEP:</label>
         <input type="text" id="cep" name="cep" required><br><br>
-        <input type="text" id="cep" name="cep" required><br><br>
 
         <label for="bairro" required>Bairro:</label>
-        <input type="text" id="bairro" name="bairro" required><br><br>
         <input type="text" id="bairro" name="bairro" required><br><br>
 
         <label for="municipio" required>Município:</label>
         <input type="text" id="municipio" name="municipio" required><br><br>
-        <input type="text" id="municipio" name="municipio" required><br><br>
 
         <label for="escola">Escola:</label>
-        <input type="text" id="escola" name="escola"><br><br>
         <input type="text" id="escola" name="escola"><br><br>
 
         <label for="uf" required>Estado (UF):</label>
