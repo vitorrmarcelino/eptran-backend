@@ -22,11 +22,11 @@ CREATE TABLE usuarios(
  );
 
 CREATE TABLE atividades (
-id INT PRIMARY KEY AUTO_INCREMENT,
-acesso DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-rota_acessada VARCHAR(255) NOT NULL,
-usuario_id INT NOT NULL,
-FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    acesso DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    rota_acessada VARCHAR(255) NOT NULL,
+    usuario_id INT NOT NULL,
+    FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
 );
 
 CREATE TABLE dados_jogos (
@@ -37,3 +37,15 @@ CREATE TABLE dados_jogos (
 	usuario_id INT NOT NULL,
 	FOREIGN KEY(usuario_id) REFERENCES usuarios(id)  
 );
+
+CREATE TABLE noticias (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(255) NOT NULL,
+    descricao TEXT NOT NULL,
+    texto TEXT NOT NULL,
+    usuario_id INT,
+    escolaridade_minima ENUM('f1', 'f2', 'em') NULL,
+    img_url VARCHAR(255) NOT NULL,
+    FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
+)
+ 
