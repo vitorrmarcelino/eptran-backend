@@ -66,10 +66,10 @@
             </select>
         </label>
         <label for="periodoInicial">Periodo Inicial
-            <input type="date" id="periodoInicial" name="periodoInicial" value="<?php echo date('Y-m-d') ?>" />
+            <input type="date" id="periodoInicial" name="periodoInicial" />
         </label>
         <label for="periodoFinal">Periodo Final
-            <input type="date" id="periodoFinal" name="periodoFinal" value="<?php echo date('Y-m-d') ?>" />
+            <input type="date" id="periodoFinal" name="periodoFinal" />
         </label>
         <label for="content">Mostrar
             <select name="content" id="content">
@@ -134,6 +134,7 @@
                 message,
                 users
             }) => {
+                console.log(message)
                 if (success) {
                     if (users.length < 1) {
                         $("table tbody").html(`
@@ -162,7 +163,11 @@
             event.preventDefault();
         });
 
-        $("form option").click(() => {
+        $("form input").change(() => {
+            $("form").submit();
+        })
+
+        $("form select").change(() => {
             $("form").submit();
         })
 
