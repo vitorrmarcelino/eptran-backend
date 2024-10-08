@@ -14,7 +14,7 @@
         $extensao = strtolower ( $extensao );
         if ( strstr ( '.jpg;.jpeg;.gif;.png', $extensao ) ) {
             $novoNome = uniqid ( time () ) . '.' . $extensao;
-            $destino = 'uploads/' . $novoNome;
+            $destino = '../uploads/imgs/' . $novoNome;
      
             move_uploaded_file( $arquivo_tmp, $destino);
         }
