@@ -31,12 +31,12 @@
         <label for="nascimento" required>Data de Nascimento:</label>
         <input type="date" id="nascimento" name="nascimento" required><br><br>
 
-        <label for="escolaridade">Escolaridade:</label>
-        <select id="escolaridade" name="escolaridade">
+        <label for="etapaEscolar">Etapa Escolar:</label>
+        <select id="etapaEscolar" name="etapaEscolar">
             <option value="f1">Fundamental 1</option>
             <option value="f2">Fundamental 2</option>
             <option value="em">Médio</option>
-            <option value="">Ensino básico concluído</option>
+            <option value="">Nenhum</option>
         </select><br><br>
 
         <label for="cep" required>CEP:</label>
@@ -56,30 +56,6 @@
             <option value="AC">AC</option>
             <option value="AL">AL</option>
             <option value="AP">AP</option>
-            <option value="AM">AM</option>
-            <option value="BA">BA</option>
-            <option value="CE">CE</option>
-            <option value="DF">DF</option>
-            <option value="ES">ES</option>
-            <option value="GO">GO</option>
-            <option value="MA">MA</option>
-            <option value="MT">MT</option>
-            <option value="MS">MS</option>
-            <option value="MG">MG</option>
-            <option value="PA">PA</option>
-            <option value="PB">PB</option>
-            <option value="PR">PR</option>
-            <option value="PE">PE</option>
-            <option value="PI">PI</option>
-            <option value="RJ">RJ</option>
-            <option value="RN">RN</option>
-            <option value="RS">RS</option>
-            <option value="RO">RO</option>
-            <option value="RR">RR</option>
-            <option value="SC">SC</option>
-            <option value="SP">SP</option>
-            <option value="SE">SE</option>
-            <option value="TO">TO</option>
         </select><br><br>
 
         <input type="submit" value="Registrar">
@@ -108,7 +84,7 @@
                 email: $("#email").val(),
                 genero: $("#genero").val(),
                 nascimento: $("#nascimento").val(),
-                escolaridade: $("#escolaridade").val(),
+                etapaEscolar: $("#etapaEscolar").val(),
                 cep: $("#cep").val(),
                 bairro: $("#bairro").val(),
                 municipio: $("#municipio").val(),

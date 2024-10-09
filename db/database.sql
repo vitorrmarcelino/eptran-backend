@@ -11,7 +11,7 @@ CREATE TABLE usuarios(
     email VARCHAR(255) UNIQUE NOT NULL,
     genero  ENUM('M', 'F', 'O') NOT NULL,
     nascimento DATE NOT NULL,
-    escolaridade ENUM('f1', 'f2', 'em') NULL,
+    etapa_escolar ENUM('f1', 'f2', 'em') NULL,
     cep VARCHAR(8) NOT NULL,
     bairro VARCHAR(255) NULL,
     municipio VARCHAR(255) NOT NULL,
