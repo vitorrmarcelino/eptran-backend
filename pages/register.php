@@ -31,8 +31,8 @@
         <label for="nascimento" required>Data de Nascimento:</label>
         <input type="date" id="nascimento" name="nascimento" required><br><br>
 
-        <label for="etapaEscolar">Etapa Escolar:</label>
-        <select id="etapaEscolar" name="etapaEscolar">
+        <label for="etapa_escolar">Etapa Escolar:</label>
+        <select id="etapa_escolar" name="etapa_escolar">
             <option value="f1">Fundamental 1</option>
             <option value="f2">Fundamental 2</option>
             <option value="em">Médio</option>
@@ -78,26 +78,17 @@
     <script>
     $(document).ready(() => {
         $("form").submit((event) => {
-            var formData = {
-                nome: $("#nome").val(),
-                senha: $("#senha").val(),
-                email: $("#email").val(),
-                genero: $("#genero").val(),
-                nascimento: $("#nascimento").val(),
-                etapaEscolar: $("#etapaEscolar").val(),
-                cep: $("#cep").val(),
-                bairro: $("#bairro").val(),
-                municipio: $("#municipio").val(),
-                escola: $("#escola").val(),
-                uf: $("#uf").val(),
-            };
+            var formData = new FormData($("form")[0]);
 
+            console.log(formData)
 
             $.ajax({
                 type: "POST",
                 url: "../process/register.php",
                 data: formData,
                 dataType: "json",
+                contentType: false,
+                processData: false,
                 encode: true,
             }).done(({
                 success,
