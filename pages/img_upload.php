@@ -25,9 +25,6 @@
             let formData = new FormData(event.target)
             console.log(formData)
 
-            formData.append("folder", "users");
-            console.log(formData)
-
             $.ajax({
                 type: "POST",
                 url: "../process/img_upload.php",
