@@ -26,7 +26,7 @@ $query = "select $content as label, count(U.id) as u_count
             from atividades as A 
             inner join usuarios as U 
             on U.id = A.usuario_id 
-            where true $filter_genero $filter_escolaridade $filter_uf $filter_municipio $filter_bairro $filter_escola $filter_periodo_inicial $filter_periodo_final
+            where U.ativo = true $filter_genero $filter_escolaridade $filter_uf $filter_municipio $filter_bairro $filter_escola $filter_periodo_inicial $filter_periodo_final
             group by $content";
 
 $data = [];
