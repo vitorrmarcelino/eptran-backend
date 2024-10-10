@@ -17,6 +17,13 @@
                 
                 <a href=\"./pages/logout.php\">
                     <button>Logout</button>
+<<<<<<< HEAD
+=======
+                </a>
+                
+                <a href=\"./pages/post_news.php\">
+                    <button>Criar notícia</button>
+>>>>>>> origin/higor
                 </a>";
             
             if ($_SESSION["userdata"]["adm"]) {
