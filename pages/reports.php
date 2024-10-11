@@ -5,27 +5,53 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Relátorios</title>
+    <title>Relatórios</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
-    th,
-    td {
-        margin: 0;
-        padding: 2px;
-        border: 1px solid black;
-    }
+        th,
+        td {
+            margin: 0;
+            padding: 8px;
+            border: 1px solid black;
+            text-align: left;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        form {
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin-top: 20px;
+        }
     </style>
 </head>
 
 <body>
+    <h1>Relatórios</h1>
+
     <form>
-        <label for="genero">Genero
+        <label for="genero">Gênero
+>>>>>>> origin/higor
             <select id="genero" name="genero">
                 <option value="">Qualquer</option>
                 <option value="M">Masculino</option>
                 <option value="F">Feminino</option>
                 <option value="O">Outro</option>
-            </select></label>
+            </select>
+        </label>
+        
+>>>>>>> origin/higor
         <label for="escolaridade">Escolaridade
             <select id="escolaridade" name="escolaridade">
                 <option value="">Qualquer</option>
@@ -66,10 +92,10 @@
             </select>
         </label>
         <label for="periodoInicial">Periodo Inicial
-            <input type="date" id="periodoInicial" name="periodoInicial" value="<?php echo date('Y-m-d') ?>" />
+            <input type="date" id="periodoInicial" name="periodoInicial" />
         </label>
         <label for="periodoFinal">Periodo Final
-            <input type="date" id="periodoFinal" name="periodoFinal" value="<?php echo date('Y-m-d') ?>" />
+            <input type="date" id="periodoFinal" name="periodoFinal" />
         </label>
         <label for="content">Mostrar
             <select name="content" id="content">
@@ -82,7 +108,7 @@
                 <option value="A.rota_acessada">Conteúdo</option>
             </select>
         </label>
-        <label for="enviar">
+        <label>
             <input type="submit" value="Enviar">
         </label>
     </form>
@@ -162,7 +188,11 @@
             event.preventDefault();
         });
 
-        $("form option").click(() => {
+        $("form input").change(() => {
+            $("form").submit();
+        })
+
+        $("form select").change(() => {
             $("form").submit();
         })
 

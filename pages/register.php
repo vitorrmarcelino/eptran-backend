@@ -28,18 +28,15 @@
             <option value="O">Outro</option>
         </select><br><br>
 
-        <label for="cpf" required>CPF:</label>
-        <input type="text" id="cpf" name="cpf" required><br><br>
-
         <label for="nascimento" required>Data de Nascimento:</label>
         <input type="date" id="nascimento" name="nascimento" required><br><br>
 
-        <label for="escolaridade">Escolaridade:</label>
-        <select id="escolaridade" name="escolaridade">
+        <label for="etapa_escolar">Etapa Escolar:</label>
+        <select id="etapa_escolar" name="etapa_escolar">
             <option value="f1">Fundamental 1</option>
             <option value="f2">Fundamental 2</option>
             <option value="em">Médio</option>
-            <option value="">Ensino básico concluído</option>
+            <option value="">Nenhum</option>
         </select><br><br>
 
         <label for="cep" required>CEP:</label>
@@ -105,27 +102,17 @@
     <script>
     $(document).ready(() => {
         $("form").submit((event) => {
-            var formData = {
-                nome: $("#nome").val(),
-                senha: $("#senha").val(),
-                email: $("#email").val(),
-                genero: $("#genero").val(),
-                cpf: $("#cpf").val(),
-                nascimento: $("#nascimento").val(),
-                escolaridade: $("#escolaridade").val(),
-                cep: $("#cep").val(),
-                bairro: $("#bairro").val(),
-                municipio: $("#municipio").val(),
-                escola: $("#escola").val(),
-                uf: $("#uf").val(),
-            };
+            var formData = new FormData($("form")[0]);
 
+            console.log(formData)
 
             $.ajax({
                 type: "POST",
                 url: "../process/register.php",
                 data: formData,
                 dataType: "json",
+                contentType: false,
+                processData: false,
                 encode: true,
             }).done(({
                 success,

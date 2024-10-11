@@ -13,11 +13,12 @@
 
     <p>Olá,
         <?php echo $_SESSION['userdata']['nome'];?>
+        <?php echo $_SESSION['userdata']['nome'];?>
     </p>
 
-    <img src="<?php echo $_SESSION['userdata']['imagem_url'] ?>" alt="foto">
+    <img src="../<?php echo $_SESSION['userdata']['imagem_url'] ?>" alt="foto">
     <a href="./img_upload.php">
-        <button>Mudar imagem</button>
+        <button>Alterar imagem</button>
     </a>
     <br>
 
@@ -56,9 +57,6 @@
             <option value="F">Feminino</option>
             <option value="O">Outro</option>
         </select><br><br>
-
-        <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" name="cpf"><br><br>
 
         <label for="nascimento">Data de Nascimento:</label>
         <input type="date" id="nascimento" name="nascimento" value=""><br><br>
@@ -138,7 +136,6 @@
                 senha: $("#senha").val(),
                 email: $("#email").val(),
                 genero: $("#genero").val(),
-                cpf: $("#cpf").val(),
                 nascimento: $("#nascimento").val(),
                 escolaridade: $("#escolaridade").val(),
                 cep: $("#cep").val(),
