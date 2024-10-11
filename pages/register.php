@@ -104,8 +104,6 @@
         $("form").submit((event) => {
             var formData = new FormData($("form")[0]);
 
-            console.log(formData)
-
             $.ajax({
                 type: "POST",
                 url: "../process/register.php",
