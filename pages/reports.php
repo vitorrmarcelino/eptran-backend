@@ -42,7 +42,6 @@
 
     <form>
         <label for="genero">Gênero
->>>>>>> origin/higor
             <select id="genero" name="genero">
                 <option value="">Qualquer</option>
                 <option value="M">Masculino</option>
@@ -50,10 +49,8 @@
                 <option value="O">Outro</option>
             </select>
         </label>
-        
->>>>>>> origin/higor
-        <label for="escolaridade">Escolaridade
-            <select id="escolaridade" name="escolaridade">
+        <label for="etapa_escolar">Escolaridade
+            <select id="etapa_escolar" name="etapa_escolar">
                 <option value="">Qualquer</option>
                 <option value="f1">Fundamental 1</option>
                 <option value="f2">Fundamental 2</option>
@@ -100,7 +97,7 @@
         <label for="content">Mostrar
             <select name="content" id="content">
                 <option value="U.genero">Gênero</option>
-                <option value="U.escolaridade">Escolaridade</option>
+                <option value="U.etapa_escolar">Escolaridade</option>
                 <option value="U.uf">UF</option>
                 <option value="U.municipio">Município</option>
                 <option value="U.bairro">Bairro</option>
@@ -133,7 +130,7 @@
         $("form").submit((event) => {
             var formData = {
                 genero: $("#genero").val(),
-                escolaridade: $("#escolaridade").val(),
+                etapa_escolar: $("#etapa_escolar").val(),
                 uf: $("#uf").val(),
                 municipio: $("#municipio").val(),
                 bairro: $("#bairro").val(),
