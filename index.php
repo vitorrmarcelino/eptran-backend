@@ -9,6 +9,19 @@
 </head>
 
 <body>
+<?php
+$noticia = "Título da notícia";
+$descricao = "Descrição da notícia";
+$imagem_url = "caminho/para/imagem.jpg";
+$id = indefinido;
+?>
+
+<a href="./pages/news.php?id=<?= $id ?>">
+  <?= $noticia ?>
+</a>
+<p><?= $descricao ?></p>
+<img src="<?= $imagem_url ?>" alt="Imagem da notícia">
+
     <?php 
         if (isset($_SESSION["userdata"])) {
             echo "<a href=\"./pages/profile.php\">
