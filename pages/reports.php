@@ -42,7 +42,6 @@
 
     <form>
         <label for="genero">Gênero
->>>>>>> origin/higor
             <select id="genero" name="genero">
                 <option value="">Qualquer</option>
                 <option value="M">Masculino</option>
@@ -51,9 +50,8 @@
             </select>
         </label>
         
->>>>>>> origin/higor
-        <label for="escolaridade">Escolaridade
-            <select id="escolaridade" name="escolaridade">
+        <label for="etapa_escolar">Etapa Escolar
+            <select id="etapa_escolar" name="etapa_escolar">
                 <option value="">Qualquer</option>
                 <option value="f1">Fundamental 1</option>
                 <option value="f2">Fundamental 2</option>
@@ -100,7 +98,7 @@
         <label for="content">Mostrar
             <select name="content" id="content">
                 <option value="U.genero">Gênero</option>
-                <option value="U.escolaridade">Escolaridade</option>
+                <option value="U.etapa_escolar">Etapa Escolar</option>
                 <option value="U.uf">UF</option>
                 <option value="U.municipio">Município</option>
                 <option value="U.bairro">Bairro</option>
@@ -118,6 +116,7 @@
             <th id="count">Nº de Usuários</th>
         </tr>
     </table>
+    <div id="grafico"></div>
 
 
     <br>
@@ -133,7 +132,7 @@
         $("form").submit((event) => {
             var formData = {
                 genero: $("#genero").val(),
-                escolaridade: $("#escolaridade").val(),
+                etapa_escolar: $("#etapa_escolar").val(),
                 uf: $("#uf").val(),
                 municipio: $("#municipio").val(),
                 bairro: $("#bairro").val(),
@@ -158,31 +157,40 @@
             }).done(({
                 success,
                 message,
-                users
+                accesses
             }) => {
-                if (success) {
-                    if (users.length < 1) {
-                        $("table tbody").html(`
-                    <tr>
-                        <td>Nenhum usuário encontrado</td>
-                    </tr>`);
-                    } else {
-                        users.forEach((row) => {
-                            $("table tbody").append(`
-                    <tr>
-                        <td>${row.label}</td>
-                        <td>${row.count}</td>
-                    </tr>`);
-                        });
-                    }
+                let format = "Setores"
+
+                if (!success) {
+                    $("table tbody").html(`
+                        <tr>
+                            <td>Erro ao buscar usuários, tente novamente.</td>
+                        </tr>`);
 
                     return;
                 }
 
-                $("table tbody").html(`
-                    <tr>
-                        <td>Erro ao buscar usuários, tente novamente.</td>
-                    </tr>`);
+                switch (format) {
+                    case "Tabela":
+                        if (accesses.length < 1) {
+                            $("table tbody").html(`
+                        <tr>
+                            <td>Nenhum usuário encontrado</td>
+                        </tr>`);
+                        } else {
+                            accesses.forEach((row) => {
+                                $("table tbody").append(`
+                        <tr>
+                            <td>${row.label}</td>
+                            <td>${row.count}</td>
+                        </tr>`);
+                            });
+                        }
+                        break;
+                    case "Setores":
+                        
+                        break;
+                }
             });
 
             event.preventDefault();

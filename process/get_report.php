@@ -3,7 +3,7 @@
 include "../db/dbconnect.php";
 
 $genero = $_POST['genero'];
-$escolaridade = $_POST['escolaridade'];
+$etapa_escolar = $_POST['etapa_escolar'];
 $uf = $_POST['uf'];
 $municipio = $_POST['municipio'];
 $bairro = $_POST['bairro'];
@@ -13,7 +13,7 @@ $periodo_final = $_POST['periodoFinal'];
 $content = $_POST['content'];
 
 $filter_genero = !empty($genero) ? "and U.genero = '$genero'" : "";
-$filter_escolaridade = !empty($escolaridade) ? "and U.escolaridade = '$escolaridade'" : "";
+$filter_etapa_escolar = !empty($etapa_escolar) ? "and U.etapa_escolar = '$etapa_escolar'" : "";
 $filter_uf = !empty($uf) ? "and U.uf = '$uf'" : "";
 $filter_municipio = !empty($municipio) ? "and U.municipio = '$municipio'" : "";
 $filter_bairro = !empty($bairro) ? "and U.bairro = '$bairro'" : "";
@@ -26,7 +26,7 @@ $query = "select $content as label, count(U.id) as u_count
             from atividades as A 
             inner join usuarios as U 
             on U.id = A.usuario_id 
-            where U.ativo = true $filter_genero $filter_escolaridade $filter_uf $filter_municipio $filter_bairro $filter_escola $filter_periodo_inicial $filter_periodo_final
+            where U.ativo = true $filter_genero $filter_etapa_escolar $filter_uf $filter_municipio $filter_bairro $filter_escola $filter_periodo_inicial $filter_periodo_final
             group by $content";
 
 $data = [];
@@ -37,18 +37,18 @@ try {
     $data["success"] = true;
     $data["message"] = $query;
     // $data["message"] = mysqli_num_rows($result) . " usuários encontrados.";
-    $data["users"] = [];
+    $data["accesses"] = [];
     
     while($row = $result->fetch_assoc()) {
         $row_data = [];
         $row_data['label'] = $row['label'];
         $row_data['count'] = $row['u_count'];
-        $data["users"][] = $row_data;
+        $data["accesses"][] = $row_data;
     }
 } catch (Exception $err) {
         $data["sucess"] = false;
         $data["message"] = $err->getMessage();
-        $data["users"] = null;
+        $data["accesses"] = null;
 }
 
 echo json_encode($data);
