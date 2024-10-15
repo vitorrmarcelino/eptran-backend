@@ -17,16 +17,15 @@ try {
     $newsdata = mysqli_fetch_assoc($result);
 
     //variáveis
-    $titulo = $newsdata['titulo'];
-    $autor = $newsdata['nome']; 
-    $descricao = $newsdata['descricao'];
-    $texto = $newsdata['texto'];
-    $escolaridade_minima = $newsdata['escolaridade_minima'];
-    $img_url = $newsdata['img_url'];
+    $data['news']['titulo'] = $newsdata['titulo'];
+    $data['news']['autor'] = $newsdata['nome']; 
+    $data['news']['descricao'] = $newsdata['descricao'];
+    $data['news']['texto'] = $newsdata['texto'];
+    $data['news']['escolaridade_minima'] = $newsdata['escolaridade_minima'];
+    $data['news']['img_url'] = $newsdata['img_url'];
 
     $data['success'] = true;  
     $data['message'] = 'Notícia carregada com sucesso!';
-    $data['news'] = $newsdata;
 } catch (Exception $err) {
     $data['success'] = false;  
     $data['message'] = 'Erro ao carregar notícia.';
