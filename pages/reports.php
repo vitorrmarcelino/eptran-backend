@@ -49,8 +49,7 @@
                 <option value="O">Outro</option>
             </select>
         </label>
-        
-        <label for="etapa_escolar">Etapa Escolar
+        <label for="etapa_escolar">Escolaridade
             <select id="etapa_escolar" name="etapa_escolar">
                 <option value="">Qualquer</option>
                 <option value="f1">Fundamental 1</option>
@@ -98,7 +97,7 @@
         <label for="content">Mostrar
             <select name="content" id="content">
                 <option value="U.genero">Gênero</option>
-                <option value="U.etapa_escolar">Etapa Escolar</option>
+                <option value="U.etapa_escolar">Escolaridade</option>
                 <option value="U.uf">UF</option>
                 <option value="U.municipio">Município</option>
                 <option value="U.bairro">Bairro</option>

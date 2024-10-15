@@ -29,7 +29,7 @@ CREATE TABLE atividades (
 );
 
 CREATE TABLE dados_jogos (
-  	id INT PRIMARY KEY AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
 	acesso DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     nome_jogo VARCHAR(255) NOT NULL,
     dados JSON NOT NULL,
@@ -47,3 +47,11 @@ CREATE TABLE noticias (
     img_url VARCHAR(255) NOT NULL,
     FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
 );
+
+CREATE TABLE noticias_salvas (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    usuario_id INT NOT NULL,
+    noticia_id INT NOT NULL,
+	FOREIGN KEY(usuario_id) REFERENCES usuarios(id), 
+	FOREIGN KEY(noticia_id) REFERENCES noticias(id)
+)
