@@ -1,0 +1,55 @@
+{
+
+    "questions": [
+        {
+            "question": "Qual seu nome?",
+            "answers": [
+                "Caio",
+                "Guilherme",
+                "Higor",
+                "Kauan"
+            ],
+            "correct": 1
+        },
+        {
+            "question": "Qual o MEU nome?",
+            "answers": [
+                "Caio",
+                "Guilherme",
+                "Higor",
+                "HTMLXYZ-Modelo 456"
+            ],
+            "correct": 3
+        },
+        {
+            "question": "Qual sua cor favorita?",
+            "answers": [
+                "Azul",
+                "Vermelho",
+                "Amarelo",
+                "Verde"
+            ],
+            "correct": 0
+        },
+        {
+            "question": "Qual sua missão?",
+            "answers": [
+                "Matar tempo",
+                "Me formar",
+                "Retornar o Cálice Sagrado",
+                "Ferrar com todo mundo"
+            ],
+            "correct": 2
+        },
+        {
+            "question": "Você pode passar agora?",
+            "answers": [
+                "Sim",
+                "Não",
+                "Talvez",
+                "Não sei"
+            ],
+            "correct": 0
+        }
+    ]
+}
