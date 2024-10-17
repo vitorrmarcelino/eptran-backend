@@ -12,8 +12,8 @@
 <body>
 
     <p>Olá,
-        <?php echo $_SESSION['userdata']['nome'];?>
-        <?php echo $_SESSION['userdata']['nome'];?>
+        <?php echo $_SESSION['userdata']['name'];?>
+        <?php echo $_SESSION['userdata']['name'];?>
     </p>
 
     <img src="../<?php echo $_SESSION['userdata']['imagem_url'] ?>" alt="foto">
@@ -24,15 +24,15 @@
 
     <div>
         <?php 
-        echo 'Nome:' . $_SESSION['userdata']['nome'] . '<br>';
+        echo 'Nome:' . $_SESSION['userdata']['name'] . '<br>';
         echo 'Email:' . $_SESSION['userdata']['email'] . '<br>';
-        echo 'Genero:' . $_SESSION['userdata']['genero'] . '<br>';
-        echo 'Data de Nascimento:' . $_SESSION['userdata']['nascimento'] . '<br>';
-        echo 'Escolaridade:' . $_SESSION['userdata']['escolaridade'] . '<br>';
+        echo 'Genero:' . $_SESSION['userdata']['gender'] . '<br>';
+        echo 'Data de Nascimento:' . $_SESSION['userdata']['birthdate'] . '<br>';
+        echo 'Escolaridade:' . $_SESSION['userdata']['school_level'] . '<br>';
         echo 'CEP:' . $_SESSION['userdata']['cep'] . '<br>';
-        echo 'Bairro:' . $_SESSION['userdata']['bairro'] . '<br>';
-        echo 'Município:' . $_SESSION['userdata']['municipio'] . '<br>';
-        echo 'Escola:' . $_SESSION['userdata']['escola'] . '<br>';
+        echo 'Bairro:' . $_SESSION['userdata']['neighborhood'] . '<br>';
+        echo 'Município:' . $_SESSION['userdata']['city'] . '<br>';
+        echo 'Escola:' . $_SESSION['userdata']['school'] . '<br>';
         echo 'Estado:' . $_SESSION['userdata']['uf'] . '<br>';    
     ?>
     </div>
@@ -41,28 +41,28 @@
 
     <form>
 
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome"><br><br>
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name"><br><br>
 
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha"><br><br>
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password"><br><br>
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email"><br><br>
 
-        <label for="genero">Gênero:</label>
-        <select id="genero" name="genero">
+        <label for="gender">Gênero:</label>
+        <select id="gender" name="gender">
             <option value=""></option>
             <option value="M">Masculino</option>
             <option value="F">Feminino</option>
             <option value="O">Outro</option>
         </select><br><br>
 
-        <label for="nascimento">Data de Nascimento:</label>
-        <input type="date" id="nascimento" name="nascimento" value=""><br><br>
+        <label for="birthdate">Data de Nascimento:</label>
+        <input type="date" id="birthdate" name="birthdate" value=""><br><br>
 
-        <label for="escolaridade">Escolaridade:</label>
-        <select id="escolaridade" name="escolaridade">
+        <label for="school_level">Escolaridade:</label>
+        <select id="school_level" name="school_level">
             <option value=""></option>
             <option value="f1">Fundamental 1</option>
             <option value="f2">Fundamental 2</option>
@@ -72,14 +72,14 @@
         <label for="cep">CEP:</label>
         <input type="text" id="cep" name="cep"><br><br>
 
-        <label for="bairro">Bairro:</label>
-        <input type="text" id="bairro" name="bairro"><br><br>
+        <label for="nighborhood">Bairro:</label>
+        <input type="text" id="nighborhood" name="nighborhood"><br><br>
 
-        <label for="municipio">Município:</label>
-        <input type="text" id="municipio" name="municipio"><br><br>
+        <label for="city">Município:</label>
+        <input type="text" id="city" name="city"><br><br>
 
-        <label for="escola">Escola:</label>
-        <input type="text" id="escola" name="escola"><br><br>
+        <label for="school">Escola:</label>
+        <input type="text" id="school" name="school"><br><br>
 
         <label for="uf">Estado (UF):</label>
         <select id="uf" name="uf">
@@ -121,7 +121,9 @@
     </form>
 
     <br>
-    <button id="logout">Logout</button>
+    <a href="./sair.php">
+        <button id="logout">Sair da Conta</button>
+    </a>
     <br>
     <br>
     <a href="..">
@@ -132,22 +134,22 @@
     $(document).ready(() => {
         $("form").submit((event) => {
             var formData = {
-                nome: $("#nome").val(),
-                senha: $("#senha").val(),
+                name: $("#name").val(),
+                password: $("#password").val(),
                 email: $("#email").val(),
-                genero: $("#genero").val(),
-                nascimento: $("#nascimento").val(),
-                escolaridade: $("#escolaridade").val(),
+                gender: $("#gender").val(),
+                birthdate: $("#birthdate").val(),
+                school_level: $("#school_level").val(),
                 cep: $("#cep").val(),
-                bairro: $("#bairro").val(),
-                municipio: $("#municipio").val(),
-                escola: $("#escola").val(),
+                nighborhood: $("#nighborhood").val(),
+                city: $("#city").val(),
+                school: $("#school").val(),
                 uf: $("#uf").val(),
             };
 
-            if (!formData.nome && !formData.senha && !formData.email && !formData.genero &&
-                !formData.cpf && !formData.nascimento && !formData.escolaridade && !formData.cep &&
-                !formData.bairro && !formData.municipio && !formData.escola && !formData.uf) {
+            if (!formData.name && !formData.password && !formData.email && !formData.gender &&
+                !formData.cpf && !formData.birthdate && !formData.school_level && !formData.cep &&
+                !formData.nighborhood && !formData.city && !formData.school && !formData.uf) {
                 event.preventDefault();
                 return;
             }
@@ -172,24 +174,6 @@
 
             event.preventDefault();
         })
-
-        $("button#logout").click((event) => {
-
-            var sure = confirm("Tem certeza que deseja sair?");
-
-            if (sure) {
-                $.ajax({
-                    type: "GET",
-                    url: "../process/logout.php",
-                    encode: true,
-                })
-
-                alert("Logout efetuado com sucesso!");
-                window.location.href = "..";
-            }
-
-            event.preventDefault();
-        });
     });
     </script>
 

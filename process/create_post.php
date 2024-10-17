@@ -4,29 +4,29 @@ session_start();
 include "../db/dbconnect.php";
 
 $id = $_SESSION["userdata"]["id"];
-$titulo = $_POST['titulo'];
-$descricao = $_POST['descricao'];
-$texto = $_POST['texto'];
-$categoria = empty($_POST['categoria']) ? 'null' : $_POST['categoria'];
+$title = $_POST['title'];
+$description = $_POST['description'];
+$content = $_POST['content'];
+$category = empty($_POST['category']) ? 'null' : $_POST['category'];
 
 $data = [];
 
 $img_url = '';
 
-if (!isset($_FILES['arquivo']['name']) && $_FILES['arquivo']['error'] > 0) {
+if (!isset($_FILES['file']['name']) && $_FILES['file']['error'] > 0) {
     $data["success"] = false;
     $data["message"] = "Erro ao carregar imagem.";
     echo json_encode($data);
     exit;
 }
 
-$arquivo_tmp = $_FILES['arquivo']['tmp_name'];
-$nome = $_FILES['arquivo']['name'];
+$file_tmp = $_FILES['file']['tmp_name'];
+$name = $_FILES['file']['name'];
 
-$extensao = pathinfo($nome, PATHINFO_EXTENSION);
-$extensao = strtolower($extensao);
+$extension = pathinfo($name, PATHINFO_EXTENSION);
+$extension = strtolower($extension);
 
-if(!strstr ('.jpg;.jpeg;.gif;.png', $extensao)) {
+if(!strstr ('.jpg;.jpeg;.gif;.png', $extension)) {
     $data["success"] = false;
     $data["message"] = "Arquivo inválido.";
     echo json_encode($data);
@@ -35,17 +35,17 @@ if(!strstr ('.jpg;.jpeg;.gif;.png', $extensao)) {
 
 
 try {
-    $novoNome = uniqid(time()) . '.' . $extensao;
+    $novoNome = uniqid(time()) . '.' . $extension;
     $img_url = "assets/imgs/posts/" . $novoNome;
     $destino = "../" . $img_url;
     
     
-    $query = "INSERT INTO postagens (titulo, descricao, texto, usuario_id, categoria, img_url) " .
-    "VALUES ('$titulo', '$descricao', '$texto', $id, '$categoria', '$img_url')";
+    $query = "INSERT INTO postagens (title, description, content, usuario_id, category, img_url) " .
+    "VALUES ('$title', '$description', '$content', $id, '$category', '$img_url')";
 
     $result = $conn->query($query);
     
-    move_uploaded_file($arquivo_tmp, $destino);
+    move_uploaded_file($file_tmp, $destino);
 
     $data["success"] = true;
     $data["message"] = "Notícia postada com sucesso.";

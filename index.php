@@ -5,43 +5,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela Inicial</title>
+    <title>EPTRAN</title>
 </head>
 
 <body>
     <?php 
         if (isset($_SESSION["userdata"])) {
-            echo "<a href=\"./pages/profile.php\">
+            echo "<a href=\"./pages/perfil.php\">
                     <button>Perfil</button>
                 </a>
                 
-                <a href=\"./pages/logout.php\">
-                    <button>Logout</button>
+                <a href=\"./pages/sair.php\">
+                    <button>Sair</button>
                 </a>
                 
-                <a href=\"./pages/post_news.php\">
-                    <button>Criar notícia</button>
-                </a>
-                
-                <a href=\"./pages/news.php\">
-                <button>Notícias</button>
+                <a href=\"./pages/postar.php\">
+                    <button>Postar Algo</button>
                 </a>";
             
             if ($_SESSION["userdata"]["adm"]) {
-                echo "<a href=\"./pages/adm_register.php\">
-                    <button>Registrar Administrador</button>
+                echo "<a href=\"./pages/cadastro-adm.php\">
+                    <button>Cadastrar Administrador</button>
                 </a>
                 
-                <a href=\"./pages/reports.php\">
-                    <button>Relatórios</button>
+                <a href=\"./pages/relatorio.php\">
+                    <button>Relatório</button>
                 </a>";
             }
         } else {
-            echo "<a href=\"./pages/register.php\">
+            echo "<a href=\"./pages/cadastro.php\">
                 <button>Registrar</button>
             </a>
 
-            <a href=\"./pages/login.php\">
+            <a href=\"./pages/entrar.php\">
                 <button>Entrar</button>
             </a>";
         }

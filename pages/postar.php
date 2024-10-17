@@ -27,33 +27,31 @@
     <h1>Nova Postagem</h1>
 
     <form action="../process/create_post.php" method="post" enctype="multipart/form-data">
-        <label for="titulo">Título:
-            <input type="text" id="titulo" name="titulo" required />
+        <label for="title">Título:
+            <input type="text" id="title" name="title" required />
         </label>
 
-        <label for="descricao">Descrição:
-            <textarea id="descricao" name="descricao" required></textarea>
+        <label for="description">Descrição:
+            <textarea id="description" name="description" required></textarea>
         </label>
 
-        <label for="texto">Texto Completo:
-            <textarea id="texto" name="texto" required></textarea>
+        <label for="content">Texto Completo:
+            <textarea id="content" name="content" required></textarea>
         </label>
 
-        <label for="categoria">Categoria:
-            <select id="categoria" name="categoria" required>
+        <label for="category">Categoria:
+            <select id="category" name="category" required>
                 <option value="">Selecione</option>
                 <option value="legislação">Legislação</option>
             </select>
         </label>
 
-        <label for="arquivo">Imagem:
-            <input type="file" id="arquivo" name="arquivo" accept=".jpg, .jpeg, .gif, .png" required />
+        <label for="file">Imagem:
+            <input type="file" id="file" name="file" accept=".jpg, .jpeg, .gif, .png" required />
         </label>
 
         <button type="submit">Enviar Postagem</button>
     </form>
-
-    <div id="message"></div>
 </body>
 </html>
 

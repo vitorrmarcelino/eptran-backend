@@ -8,7 +8,7 @@ session_start();
 // Captura os dados enviados via POST pelo formulário
 $email = $_POST['email'];
 
-$query = "SELECT adm FROM usuarios WHERE email = '$email'";
+$query = "SELECT adm FROM users WHERE email = '$email'";
 $result = mysqli_query($conn, $query);
 
 if (mysqli_num_rows($result) < 1) {
@@ -25,7 +25,7 @@ if (!$result->fetch_assoc()["adm"]) {
     exit;
 }
 
-$query = "UPDATE usuarios SET adm = false WHERE email = '$email'";
+$query = "UPDATE users SET adm = false WHERE email = '$email'";
 $result = mysqli_query($conn, $query);
 
 if ($result) {

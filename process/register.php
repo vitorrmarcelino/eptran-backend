@@ -3,20 +3,20 @@ session_start();
 
 include "../db/dbconnect.php";
 
-$nome = $_POST['nome'];
-$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+$full_name = $_POST['full_name'];
+$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $email = $_POST['email'];
-$genero = $_POST['genero'];
-$nascimento = $_POST['nascimento'];
-$etapa_escolar = empty($_POST['etapa_escolar']) ? 'null' : $_POST['etapa_escolar'];
+$gender = $_POST['gender'];
+$birthdate = $_POST['birthdate'];
+$school_level = empty($_POST['school_level']) ? 'null' : $_POST['school_level'];
 $cep = $_POST['cep'];
-$bairro = $_POST['bairro'];
-$municipio = $_POST['municipio'];
-$escola = empty($_POST['escola']) ? 'null' : $_POST['escola'];
+$neighborhood = $_POST['neighborhood'];
+$city = $_POST['city'];
+$school = empty($_POST['school']) ? 'null' : $_POST['school'];
 $uf = $_POST['uf'];
 
-$query = "INSERT INTO usuarios (nome, senha, email, genero, nascimento, etapa_escolar, cep, bairro, municipio, escola, uf) 
-VALUES ('$nome', '$senha', '$email', '$genero', '$nascimento', '$etapa_escolar', '$cep', '$bairro', '$municipio', '$escola', '$uf')";
+$query = "INSERT INTO users (full_name, password, email, gender, birthdate, school_level, cep, neighborhood, city, school, uf) 
+VALUES ('$full_name', '$password', '$email', '$gender', '$birthdate', '$school_level', '$cep', '$neighborhood', '$city', '$school', '$uf')";
 
 $data = [];
 

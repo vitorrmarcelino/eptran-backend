@@ -27,7 +27,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "../process/img_upload.php",
+                url: "../process/upload_user_img.php",
                 data: formData,
                 dataType: "json",
                 contentType: false,
@@ -41,7 +41,7 @@
                 alert(message);
 
                 if (success) {
-                    window.location.href = "./profile.php";
+                    window.location.href = "./perfil.php";
                 }
             })
 

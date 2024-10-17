@@ -2,7 +2,7 @@
 
 include "../db/dbconnect.php";
 
-$select = "select id, email from usuarios where adm = true;"; 
+$select = "select id, email from users where adm = true;"; 
 $executar_select = $conn -> query($select);
 $data =[];
 

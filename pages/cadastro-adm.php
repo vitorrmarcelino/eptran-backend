@@ -5,13 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Registro de Administrador</title>
+    <title>Formulário de Cadastrar de Administrador</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
 
-    <table id="tabela">
+    <table>
         <thead>
             <th>ID</th>
             <th>Email</th>
@@ -22,13 +22,13 @@
     </table>
 
 
-    <h1>Registrar Administrador</h1>
+    <h1>Cadastrar Administrador</h1>
     <form>
         <label for="email" required>Email:</label>
         <input type="email" id="email" name="email" required><br><br>
 
-        <input id="registrar" type="submit" value="Registrar">
-        <input id="remover" type="submit" value="Remover">
+        <input id="add-button" type="submit" value="Cadastrar">
+        <input id="remove-button" type="submit" value="Remover">
     </form>
 
     <br>
@@ -40,7 +40,7 @@
 
     <script>
     $(document).ready(() => {
-        $("#registrar").click((event) => {
+        $("#add-button").click((event) => {
             let formData = {
                 email: $("#email").val(),
             };
@@ -64,14 +64,14 @@
         });
 
 
-        $("#remover").click((event) => {
+        $("#remove-button").click((event) => {
             let formData = {
                 email: $("#email").val(),
             };
 
             $.ajax({
                 type: "POST",
-                url: "../process/adm_delete.php",
+                url: "../process/adm_remove.php",
                 data: formData,
                 dataType: "json",
                 encode: true,
@@ -91,7 +91,7 @@
     });
 
     function updateTable() {
-        $("#tabela tbody").html('');
+        $("table tbody").html('');
 
         $.ajax({
             type: "GET",

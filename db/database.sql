@@ -2,56 +2,56 @@ CREATE DATABASE eptran;
 
 USE eptran;
 
-CREATE TABLE usuarios (
+CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    imagem_url VARCHAR(255) NULL,
-    nome VARCHAR(255) NOT NULL,
-    senha VARCHAR(255) NOT NULL,
+    img_url VARCHAR(255) NULL,
+    full_name VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     adm BOOLEAN DEFAULT FALSE,
     email VARCHAR(255) UNIQUE NOT NULL,
-    genero  ENUM('M', 'F', 'O') NOT NULL,
-    nascimento DATE NOT NULL,
-    etapa_escolar ENUM('f1', 'f2', 'em') NULL,
+    gender  ENUM('M', 'F', 'O') NOT NULL,
+    birthdate DATE NOT NULL,
+    school_level ENUM('f1', 'f2', 'em') NULL,
     cep VARCHAR(8) NOT NULL,
-    bairro VARCHAR(255) NULL,
-    municipio VARCHAR(255) NOT NULL,
-    escola VARCHAR(255) NOT NULL,
+    neighborhood VARCHAR(255) NULL,
+    city VARCHAR(255) NOT NULL,
+    school VARCHAR(255) NOT NULL,
     uf CHAR(2) NOT NULL,
-    ativo BOOLEAN DEFAULT TRUE
+    active BOOLEAN DEFAULT TRUE
 );
 
-CREATE TABLE atividades (
+CREATE TABLE accesses (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    acesso DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    rota_acessada VARCHAR(255) NOT NULL,
-    usuario_id INT NOT NULL,
-    FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
+    access_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    title VARCHAR(255) NOT NULL,
+    user_id INT NOT NULL,
+    FOREIGN KEY(user_id) REFERENCES users(id)
 );
 
-CREATE TABLE dados_jogos (
+CREATE TABLE game_data (
     id INT PRIMARY KEY AUTO_INCREMENT,
-	acesso DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    nome_jogo VARCHAR(255) NOT NULL,
-    dados JSON NOT NULL,
-	usuario_id INT NOT NULL,
-	FOREIGN KEY(usuario_id) REFERENCES usuarios(id)  
+	update_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    title VARCHAR(255) NOT NULL,
+    save_data JSON NOT NULL,
+	user_id INT NOT NULL,
+	FOREIGN KEY(user_id) REFERENCES users(id)  
 );
 
-CREATE TABLE noticias (
+CREATE TABLE posts (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    titulo VARCHAR(255) NOT NULL,
-    descricao TEXT NOT NULL,
-    texto TEXT NOT NULL,
-    usuario_id INT,
-    escolaridade_minima ENUM('f1', 'f2', 'em') NULL,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    content TEXT NOT NULL,
+    user_id INT,
+    category ENUM('f1', 'f2', 'em') NULL,
     img_url VARCHAR(255) NOT NULL,
-    FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
+    FOREIGN KEY(user_id) REFERENCES users(id)
 );
 
-CREATE TABLE noticias_salvas (
+CREATE TABLE saved_posts (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    usuario_id INT NOT NULL,
-    noticia_id INT NOT NULL,
-	FOREIGN KEY(usuario_id) REFERENCES usuarios(id), 
-	FOREIGN KEY(noticia_id) REFERENCES noticias(id)
+    user_id INT NOT NULL,
+    post_id INT NOT NULL,
+	FOREIGN KEY(user_id) REFERENCES users(id), 
+	FOREIGN KEY(post_id) REFERENCES posts(id)
 )

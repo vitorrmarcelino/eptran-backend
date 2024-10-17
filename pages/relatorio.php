@@ -41,16 +41,16 @@
     <h1>Relatórios</h1>
 
     <form>
-        <label for="genero">Gênero
-            <select id="genero" name="genero">
+        <label for="gender">Gênero
+            <select id="gender" name="gender">
                 <option value="">Qualquer</option>
                 <option value="M">Masculino</option>
                 <option value="F">Feminino</option>
                 <option value="O">Outro</option>
             </select>
         </label>
-        <label for="etapa_escolar">Escolaridade
-            <select id="etapa_escolar" name="etapa_escolar">
+        <label for="school_level">Escolaridade
+            <select id="school_level" name="school_level">
                 <option value="">Qualquer</option>
                 <option value="f1">Fundamental 1</option>
                 <option value="f2">Fundamental 2</option>
@@ -65,44 +65,44 @@
                 <option value="pr">PR</option>
             </select>
         </label>
-        <label for="municipio">Município
-            <select id="municipio" name="municipio">
+        <label for="city">Município
+            <select id="city" name="city">
                 <option value="">Qualquer</option>
                 <option value="Joinville">Joinville</option>
                 <option value="Curitiba">Curitiba</option>
                 <option value="Porto Alegre">Porto Alegre</option>
             </select>
         </label>
-        <label for="bairro">Bairro
-            <select id="bairro" name="bairro">
+        <label for="neighborhood">Bairro
+            <select id="neighborhood" name="neighborhood">
                 <option value="">Qualquer</option>
                 <option value="Glória">Glória</option>
                 <option value="Aventureiro">Aventureiro</option>
                 <option value="Bucarein">Bucarein</option>
             </select>
         </label>
-        <label for="escola">Escola
-            <select id="escola" name="escola">
+        <label for="school">Escola
+            <select id="school" name="school">
                 <option value="">Qualquer</option>
                 <option value="SESI">SESI</option>
                 <option value="Outra">Outra</option>
             </select>
         </label>
-        <label for="periodoInicial">Periodo Inicial
-            <input type="date" id="periodoInicial" name="periodoInicial" />
+        <label for="initialDate">Periodo Inicial
+            <input type="date" id="initialDate" name="initialDate" />
         </label>
-        <label for="periodoFinal">Periodo Final
-            <input type="date" id="periodoFinal" name="periodoFinal" />
+        <label for="end_date">Periodo Final
+            <input type="date" id="end_date" name="end_date" />
         </label>
         <label for="content">Mostrar
             <select name="content" id="content">
-                <option value="U.genero">Gênero</option>
-                <option value="U.etapa_escolar">Escolaridade</option>
+                <option value="U.gender">Gênero</option>
+                <option value="U.school_level">Escolaridade</option>
                 <option value="U.uf">UF</option>
-                <option value="U.municipio">Município</option>
-                <option value="U.bairro">Bairro</option>
-                <option value="U.escola">Escola</option>
-                <option value="A.rota_acessada">Conteúdo</option>
+                <option value="U.city">Município</option>
+                <option value="U.neighborhood">Bairro</option>
+                <option value="U.school">Escola</option>
+                <option value="A.title">Conteúdo</option>
             </select>
         </label>
         <label>
@@ -115,11 +115,6 @@
             <th id="count">Nº de Usuários</th>
         </tr>
     </table>
-    <div id="grafico"></div>
-
-
-    <br>
-    <br>
 
     <a href="..">
         <button>Início</button>
@@ -130,14 +125,14 @@
     $(document).ready(() => {
         $("form").submit((event) => {
             var formData = {
-                genero: $("#genero").val(),
-                etapa_escolar: $("#etapa_escolar").val(),
+                gender: $("#gender").val(),
+                school_level: $("#school_level").val(),
                 uf: $("#uf").val(),
-                municipio: $("#municipio").val(),
-                bairro: $("#bairro").val(),
-                escola: $("#escola").val(),
-                periodoInicial: $("#periodoInicial").val(),
-                periodoFinal: $("#periodoFinal").val(),
+                city: $("#city").val(),
+                neighborhood: $("#neighborhood").val(),
+                school: $("#school").val(),
+                initialDate: $("#initialDate").val(),
+                end_date: $("#end_date").val(),
                 content: $("#content").val(),
             };
 

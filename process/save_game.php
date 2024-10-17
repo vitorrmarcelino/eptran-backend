@@ -3,14 +3,14 @@ include 'db_connection.php';
 
 session_start();
 
-$rota_acessada = $_SERVER['REQUEST_URI'];
-$usuario_id = $_SESSION['userdata']['id'];
-$dados_jogo = $_POST['dados_jogo'];
+$title = $_SERVER['REQUEST_URI'];
+$user_id = $_SESSION['userdata']['id'];
+$game_data = $_POST['game_data'];
 
 $data = [];
 
 try {
-    $query = "INSERT INTO atividades (nome_jogo, usuario_id,dados) VALUES ('$rota_acessada', '$usuario_id','$dados_jogo')";
+    $query = "INSERT INTO game_data (title, user_id, save_data) VALUES ('$title', '$user_id','$game_data')";
 
     $executa_insert = mysqli_query($conn, $query);
 
