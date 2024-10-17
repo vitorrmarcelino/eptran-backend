@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro de Notícias</title>
+    <title>Criação de Postagem</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
         label {
@@ -24,9 +24,9 @@
 </head>
 
 <body>
-    <h1>Cadastrar Nova Notícia</h1>
+    <h1>Nova Postagem</h1>
 
-    <form id="newsForm" action="../process/post_news.php" method="post" enctype="multipart/form-data">
+    <form action="../process/create_post.php" method="post" enctype="multipart/form-data">
         <label for="titulo">Título:
             <input type="text" id="titulo" name="titulo" required />
         </label>
@@ -39,12 +39,10 @@
             <textarea id="texto" name="texto" required></textarea>
         </label>
 
-        <label for="escolaridade">Escolaridade Mínima:
-            <select id="escolaridade" name="escolaridade" required>
+        <label for="categoria">Categoria:
+            <select id="categoria" name="categoria" required>
                 <option value="">Selecione</option>
-                <option value="f1">Fundamental 1</option>
-                <option value="f2">Fundamental 2</option>
-                <option value="em">Ensino Médio</option>
+                <option value="legislação">Legislação</option>
             </select>
         </label>
 
@@ -52,7 +50,7 @@
             <input type="file" id="arquivo" name="arquivo" accept=".jpg, .jpeg, .gif, .png" required />
         </label>
 
-        <button type="submit">Cadastrar Notícia</button>
+        <button type="submit">Enviar Postagem</button>
     </form>
 
     <div id="message"></div>

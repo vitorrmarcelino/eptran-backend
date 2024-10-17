@@ -21,6 +21,10 @@
                 
                 <a href=\"./pages/post_news.php\">
                     <button>Criar notícia</button>
+                </a>
+                
+                <a href=\"./pages/news.php\">
+                <button>Notícias</button>
                 </a>";
             
             if ($_SESSION["userdata"]["adm"]) {

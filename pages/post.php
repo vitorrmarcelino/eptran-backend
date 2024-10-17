@@ -25,7 +25,7 @@
 
         $.ajax(
             type: "POST",
-            url: "../process/get_news.php",
+            url: "../process/create_post.php",
             data: { news_id },
             dataType: "json",
             encode: true,
