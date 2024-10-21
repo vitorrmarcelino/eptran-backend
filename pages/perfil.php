@@ -133,19 +133,7 @@
     <script>
     $(document).ready(() => {
         $("form").submit((event) => {
-            var formData = {
-                name: $("#name").val(),
-                password: $("#password").val(),
-                email: $("#email").val(),
-                gender: $("#gender").val(),
-                birthdate: $("#birthdate").val(),
-                school_level: $("#school_level").val(),
-                cep: $("#cep").val(),
-                nighborhood: $("#nighborhood").val(),
-                city: $("#city").val(),
-                school: $("#school").val(),
-                uf: $("#uf").val(),
-            };
+            let formData = new FormData(event.target);
 
             if (!formData.name && !formData.password && !formData.email && !formData.gender &&
                 !formData.cpf && !formData.birthdate && !formData.school_level && !formData.cep &&

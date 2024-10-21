@@ -13,8 +13,8 @@
 <body>
     <form id="form" enctype="multipart/form-data">
         <h1>Upload de Imagem</h1>
-        <label for="arquivo">Escolha uma imagem:</label>
-        <input type="file" id="arquivo" name="arquivo" accept="image/*" required>
+        <label for="image">Escolha uma imagem:</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
         <br><br>
         <input type="submit" value="Carregar Imagem">
     </form>
@@ -22,8 +22,7 @@
     <script>
     $(document).ready(() => {
         $("form").submit((event) => {
-            let formData = new FormData(event.target)
-            console.log(formData)
+            let formData = new FormData(event.target);
 
             $.ajax({
                 type: "POST",

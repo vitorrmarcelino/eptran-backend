@@ -6,15 +6,15 @@ $id = $_SESSION["userdata"]["id"];
 
 $data = [];
 
-if (!isset($_FILES['file']['name']) && $_FILES['file']['error'] > 0) {
+if (!isset($_FILES['image']['name']) && $_FILES['image']['error'] > 0) {
     $data["success"] = false;
     $data["message"] = "Erro ao carregar imagem.";
     echo json_encode($data);
     exit;
 }
 
-$file_tmp = $_FILES['file']['tmp_name'];
-$name = $_FILES['file']['name'];
+$file_tmp = $_FILES['image']['tmp_name'];
+$name = $_FILES['image']['name'];
 
 $extension = strtolower(pathinfo($name, PATHINFO_EXTENSION));
 

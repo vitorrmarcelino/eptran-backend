@@ -2,7 +2,7 @@
 
 include "../db/dbconnect.php";
 
-$school_name = "SESI";
+$school_name = $_POST["school_name"];
 
 $query = $conn->prepare("SELECT id FROM schools WHERE name = ?");
 $query->bind_param("s", $school_name);

@@ -21,12 +21,14 @@ $filter_school = !empty($school) ? "and U.school = '$school'" : "";
 $initial_date = !empty($initial_date) ? "and A.acesso > '$initial_date'" : "";
 $end_date = !empty($end_date) ? "and A.acesso < '$end_date'" : "";
 
-$query = "select $content as label, count(U.id) as u_count 
-            from activities as A 
-            inner join users as U 
-            on U.id = A.user_id 
-            where U.active = true $filter_gender $filter_school_level $filter_uf $filter_city $filter_neighborhood $filter_school $initial_date $end_date
-            group by $content";
+$query = $conn->prepare("select $content as label, count(U.id) as u_count " . 
+            "from activities as A " . 
+            "inner join users as U " . 
+            "on U.id = A.user_id " . 
+            "inner join schools as S " .
+            "on S.id = U.school_id " .  
+            "where U.active = true $filter_gender $filter_school_level $filter_uf $filter_city $filter_neighborhood $filter_school $initial_date $end_date " . 
+            "group by $content");
 
 $data = [];
 
@@ -35,7 +37,6 @@ try {
 
     $data["success"] = true;
     $data["message"] = $query;
-    // $data["message"] = mysqli_num_rows($result) . " usuários encontrados.";
     $data["accesses"] = [];
     
     while($row = $result->fetch_assoc()) {

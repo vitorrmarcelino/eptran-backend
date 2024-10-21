@@ -101,7 +101,7 @@
                 <option value="U.uf">UF</option>
                 <option value="U.city">Município</option>
                 <option value="U.neighborhood">Bairro</option>
-                <option value="U.school">Escola</option>
+                <option value="S.name">Escola</option>
                 <option value="A.title">Conteúdo</option>
             </select>
         </label>

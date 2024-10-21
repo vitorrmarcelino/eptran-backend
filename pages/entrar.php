@@ -42,10 +42,7 @@
     <script>
     $(document).ready(() => {
         $("form").submit((event) => {
-            var formData = {
-                email: $("#email").val(),
-                senha: $("#password").val(),
-            };
+            let formData = new FormData(event.target);
 
             $.ajax({
                 type: "POST",

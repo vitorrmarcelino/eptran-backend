@@ -46,8 +46,8 @@
             </select>
         </label>
 
-        <label for="file">Imagem:
-            <input type="file" id="file" name="file" accept=".jpg, .jpeg, .gif, .png" required />
+        <label for="image">Imagem:
+            <input type="file" id="image" name="image" accept=".jpg, .jpeg, .gif, .png" required />
         </label>
 
         <button type="submit">Enviar Postagem</button>

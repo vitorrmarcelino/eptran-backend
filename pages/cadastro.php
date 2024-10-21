@@ -78,26 +78,16 @@
     <script>
     $(document).ready(() => {
         $("form").submit((event) => {
-            var formData = {
-                name: $("#name").val(),
-                password: $("#password").val(),
-                email: $("#email").val(),
-                gender: $("#gender").val(),
-                birthdate: $("#birthdate").val(),
-                school_level: $("#school_level").val(),
-                cep: $("#cep").val(),
-                neighborhood: $("#neighborhood").val(),
-                city: $("#city").val(),
-                school: $("#school").val(),
-                uf: $("#uf").val(),
-            };
-
+            let formData = new FormData(event.target);
 
             $.ajax({
                 type: "POST",
                 url: "../process/register.php",
                 data: formData,
                 dataType: "json",
+                contentType: false,
+                cache: false,
+                processData: false,
                 encode: true,
             }).done(({
                 success,
@@ -112,6 +102,30 @@
 
             event.preventDefault();
         })
+
+        $("#school").on("input", (event) => {
+            if ($("#school").val().length < 3) return;
+
+            let formData = {
+                school_name: $("#school").val()
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "../process/get_schools.php",
+                data: formData,
+                dataType: "json",
+                encode: true,
+            }).done(({
+                success,
+                message,
+                schools
+            }) => {
+                console.log(schools);
+            });
+
+            event.preventDefault();
+        });
     });
     </script>
 

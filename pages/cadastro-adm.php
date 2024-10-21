@@ -27,7 +27,7 @@
         <label for="email" required>Email:</label>
         <input type="email" id="email" name="email" required><br><br>
 
-        <input id="add-button" type="submit" value="Cadastrar">
+        <input id="add-button" type="submit" value="Cadastrar" >
         <input id="remove-button" type="submit" value="Remover">
     </form>
 
@@ -41,9 +41,7 @@
     <script>
     $(document).ready(() => {
         $("#add-button").click((event) => {
-            let formData = {
-                email: $("#email").val(),
-            };
+            let formData = new FormData(event.target);
 
             $.ajax({
                 type: "POST",
@@ -65,9 +63,7 @@
 
 
         $("#remove-button").click((event) => {
-            let formData = {
-                email: $("#email").val(),
-            };
+            let formData = new FormData(event.target);
 
             $.ajax({
                 type: "POST",

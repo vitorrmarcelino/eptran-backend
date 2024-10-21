@@ -13,15 +13,15 @@ $data = [];
 
 $img_url = '';
 
-if (!isset($_FILES['file']['name']) && $_FILES['file']['error'] > 0) {
+if (!isset($_FILES['image']['name']) && $_FILES['image']['error'] > 0) {
     $data["success"] = false;
     $data["message"] = "Erro ao carregar imagem.";
     echo json_encode($data);
     exit;
 }
 
-$file_tmp = $_FILES['file']['tmp_name'];
-$name = $_FILES['file']['name'];
+$file_tmp = $_FILES['image']['tmp_name'];
+$name = $_FILES['image']['name'];
 
 $extension = pathinfo($name, PATHINFO_EXTENSION);
 $extension = strtolower($extension);
@@ -40,7 +40,7 @@ try {
     $destino = "../" . $img_url;
     
     
-    $query = "INSERT INTO postagens (title, description, content, usuario_id, category, img_url) " .
+    $query = "INSERT INTO posts (title, description, content, user_id, category, img_url) " .
     "VALUES ('$title', '$description', '$content', $id, '$category', '$img_url')";
 
     $result = $conn->query($query);
