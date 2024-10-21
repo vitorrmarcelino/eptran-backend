@@ -26,15 +26,18 @@
 
 <script>
     //Variáveis
-    i = 0;
-    j = 0;
-    
+    let i = 0;
+    let j = 0;
+    let pquestion = document.querySelector("#question")
+
     //Processo
 
-    fetch('questions.json').then(response =>{
-        return resposta.json();
+    fetch("questions.json").then((response) =>{ 
+        response.json().then((data) => {
+            pquestion.innerHTML = data.questions[3].answers[2]
+        })
     })
-    
+
     
     
 
