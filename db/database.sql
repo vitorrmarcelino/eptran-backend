@@ -47,3 +47,22 @@ CREATE TABLE noticias (
     img_url VARCHAR(255) NOT NULL,
     FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
 );
+
+CREATE TABLE postagens (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(255) NOT NULL,
+    descricao TEXT NOT NULL,
+    texto TEXT NOT NULL,
+    usuario_id INT,
+    categoria VARCHAR(255) NULL,
+    img_url VARCHAR(255) NOT NULL,
+    FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
+);
+
+CREATE TABLE postagens_salvas (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    usuario_id INT NOT NULL,
+    postagem_id INT NOT NULL,
+	FOREIGN KEY(usuario_id) REFERENCES usuarios(id), 
+	FOREIGN KEY(postagem_id) REFERENCES postagens(id)
+)

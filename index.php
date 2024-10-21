@@ -47,6 +47,33 @@
         }
     ?>
 
+<?php
+    include "./db/dbconnect.php";
+
+    
+    
+    $query = "SELECT titulo, descricao, texto, usuario_id, categoria, img_url, id 
+            FROM postagens 
+            ORDER BY id DESC 
+            LIMIT 10";
+    $result = $conn->query($query);
+    
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            echo "<h2>" . $row["titulo"] . "</h2>";
+            echo "<p><strong>Descrição:</strong> " . $row["descricao"] . "</p>";
+            echo "<p><strong>Texto:</strong> " . $row["texto"] . "</p>";
+            echo "<p><strong>Usuário ID:</strong> " . $row["usuario_id"] . " | <strong>Categoria:</strong> " . $row["categoria"] . "</p>";
+            echo "<img src='" . $row["img_url"] . "' alt='Imagem da postagem' style='max-width: 100%; height: auto;'><br>";
+            echo "<small>Publicado em: " . $row["id"] . "</small><br><br>";
+        }
+    } else {
+        echo "Nenhuma postagem encontrada.";
+    }
+    
+    $conn->close();
+    ?>
+
 </body>
 
 </html>

@@ -13,13 +13,13 @@
 
         <p id="question"></p>
 
-        <button id="answer1" onclick="Next()"> </button>
+        <button id="answer1" onclick="Next()" value="0"> </button>
 
-        <button id="answer2" onclick="Next()"> </button>
+        <button id="answer2" onclick="Next()" value="1"> </button>
 
-        <button id="answer3" onclick="Next()"> </button>
+        <button id="answer3" onclick="Next()" value="2"> </button>
 
-        <button id="answer4" onclick="Next()"> </button>
+        <button id="answer4" onclick="Next()" value="3"> </button>
     </div>
 
 </body>
@@ -34,12 +34,15 @@
     let button3 = document.querySelector("#answer3")
     let button4 = document.querySelector("#answer4")
 
+
     //Função que muda a questão
 
     function Next() {
         if (i < 5) {
             i += 1;
             console.log(i)
+
+            
 
             fetch("questions.json").then((response) => {
                 response.json().then((data) => {
