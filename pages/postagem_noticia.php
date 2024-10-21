@@ -5,7 +5,7 @@ $imagem_url = isset($_POST['imagem_url']) ? $_POST['imagem_url'] : "caminho/para
 $id = isset($_POST['id']) ? intval($_POST['id']) : 1;
 ?>
 
-<a href="./pages/news.php?id=<?= $id ?>">
+<a href="./pages/post.php?id=<?= $id ?>">
   <?= htmlspecialchars($noticia) ?>
 </a>
 <p><?= htmlspecialchars($descricao) ?></p>

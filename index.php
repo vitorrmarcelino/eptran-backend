@@ -16,7 +16,7 @@ $imagem_url = "caminho/para/imagem.jpg";
 $id = "indefinido";
 ?>
 
-<a href="./pages/news.php?id=<?= $id ?>">
+<a href="./pages/postagens.php?id=<?= $id ?>">
   <?= $noticia ?>
 </a>
 <p><?= $descricao ?></p>
@@ -32,7 +32,7 @@ $id = "indefinido";
                     <button>Logout</button>
                 </a>
                 
-                <a href=\"./pages/post_news.php\">
+                <a href=\"./pages/create_post.php\">
                     <button>Criar notícia</button>
                 </a>
                 

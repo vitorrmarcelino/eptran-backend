@@ -36,7 +36,7 @@ if(!strstr ('.jpg;.jpeg;.gif;.png', $extensao)) {
 
 try {
     $novoNome = uniqid(time()) . '.' . $extensao;
-    $img_url = "assets/imgs/posts/" . $novoNome;
+    $img_url = "assets/imgs/post/" . $novoNome;
     $destino = "../" . $img_url;
     
     
