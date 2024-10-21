@@ -2,6 +2,11 @@ CREATE DATABASE eptran;
 
 USE eptran;
 
+CREATE TABLE schools (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) UNIQUE NOT NULL
+);
+
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     img_url VARCHAR(255) NULL,
@@ -15,9 +20,10 @@ CREATE TABLE users (
     cep VARCHAR(8) NOT NULL,
     neighborhood VARCHAR(255) NULL,
     city VARCHAR(255) NOT NULL,
-    school VARCHAR(255) NOT NULL,
+    school_id INT NULL,
     uf CHAR(2) NOT NULL,
-    active BOOLEAN DEFAULT TRUE
+    active BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY(school_id) REFERENCES schools(id)
 );
 
 CREATE TABLE accesses (
@@ -54,4 +60,4 @@ CREATE TABLE saved_posts (
     post_id INT NOT NULL,
 	FOREIGN KEY(user_id) REFERENCES users(id), 
 	FOREIGN KEY(post_id) REFERENCES posts(id)
-)
+);

@@ -3,6 +3,10 @@ session_start();
 
 include "../db/dbconnect.php";
 
+$school_name = empty($_POST['school']) ? 'null' : $_POST['school']
+
+include "../process/get_school_id.php";
+
 $full_name = $_POST['full_name'];
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $email = $_POST['email'];
@@ -12,11 +16,10 @@ $school_level = empty($_POST['school_level']) ? 'null' : $_POST['school_level'];
 $cep = $_POST['cep'];
 $neighborhood = $_POST['neighborhood'];
 $city = $_POST['city'];
-$school = empty($_POST['school']) ? 'null' : $_POST['school'];
 $uf = $_POST['uf'];
 
-$query = "INSERT INTO users (full_name, password, email, gender, birthdate, school_level, cep, neighborhood, city, school, uf) 
-VALUES ('$full_name', '$password', '$email', '$gender', '$birthdate', '$school_level', '$cep', '$neighborhood', '$city', '$school', '$uf')";
+$query = "INSERT INTO users (full_name, password, email, gender, birthdate, school_level, cep, neighborhood, city, school, uf) " . 
+    "VALUES ('$full_name', '$password', '$email', '$gender', '$birthdate', '$school_level', '$cep', '$neighborhood', '$city', '$school_id', '$uf')";
 
 $data = [];
 
@@ -41,5 +44,5 @@ try {
 
 echo json_encode($data);
 
-
 ?>
+
