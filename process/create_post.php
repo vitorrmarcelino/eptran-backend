@@ -7,7 +7,7 @@ $id = $_SESSION["userdata"]["id"];
 $titulo = $_POST['titulo'];
 $descricao = $_POST['descricao'];
 $texto = $_POST['texto'];
-$escolaridade = empty($_POST['escolaridade']) ? 'null' : $_POST['escolaridade'];
+$categoria = empty($_POST['categoria']) ? 'null' : $_POST['categoria'];
 
 $data = [];
 
@@ -36,12 +36,12 @@ if(!strstr ('.jpg;.jpeg;.gif;.png', $extensao)) {
 
 try {
     $novoNome = uniqid(time()) . '.' . $extensao;
-    $img_url = "assets/imgs/news/" . $novoNome;
+    $img_url = "assets/imgs/posts/" . $novoNome;
     $destino = "../" . $img_url;
     
     
-    $query = "INSERT INTO noticias (titulo, descricao, texto, usuario_id, escolaridade_minima, img_url) " .
-    "VALUES ('$titulo', '$descricao', '$texto', $id, '$escolaridade', '$img_url')";
+    $query = "INSERT INTO postagens (titulo, descricao, texto, usuario_id, categoria, img_url) " .
+    "VALUES ('$titulo', '$descricao', '$texto', $id, '$categoria', '$img_url')";
 
     $result = $conn->query($query);
     
