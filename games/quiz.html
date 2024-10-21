@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+
+<body>
+
+    <div>
+
+        <p id="question"></p>
+
+        <button id="answer1" onclick="Next()" value="0"> </button>
+
+        <button id="answer2" onclick="Next()" value="1"> </button>
+
+        <button id="answer3" onclick="Next()" value="2"> </button>
+
+        <button id="answer4" onclick="Next()" value="3"> </button>
+    </div>
+
+</body>
+
+<script>
+    //Variáveis
+    let i = 0;
+    let j = 0;
+    let pquestion = document.querySelector("#question")
+    let button1 = document.querySelector("#answer1")
+    let button2 = document.querySelector("#answer2")
+    let button3 = document.querySelector("#answer3")
+    let button4 = document.querySelector("#answer4")
+
+
+    //Função que muda a questão
+
+    function Next() {
+        if (i < 5) {
+            i += 1;
+            console.log(i)
+
+            
+
+            fetch("questions.json").then((response) => {
+                response.json().then((data) => {
+
+                    pquestion.innerHTML = data.questions[i].question
+                    button1.innerHTML = data.questions[i].answers[0]
+                    button2.innerHTML = data.questions[i].answers[1]
+                    button3.innerHTML = data.questions[i].answers[2]
+                    button4.innerHTML = data.questions[i].answers[3]
+                })
+            })
+        }
+
+    }
+
+
+    //Processo
+
+    fetch("questions.json").then((response) => {
+        response.json().then((data) => {
+
+            pquestion.innerHTML = data.questions[i].question
+            button1.innerHTML = data.questions[i].answers[0]
+            button2.innerHTML = data.questions[i].answers[1]
+            button3.innerHTML = data.questions[i].answers[2]
+            button4.innerHTML = data.questions[i].answers[3]
+        })
+    })
+
+
+
+
+
+
+
+</script>
+
+</html>
