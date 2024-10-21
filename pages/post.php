@@ -24,7 +24,7 @@
             parse_str($_SERVER["QUERY_STRING"], $queries);
             $id = $queries['id'];
             echo "
-                <a href='./update_news.php?id=$id'>Editar postagem</a>
+                <a href='./create_post.php?id=$id'>Editar postagem</a>
             ";
         }
     ?>

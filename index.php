@@ -13,7 +13,7 @@
 $noticia = "Título da notícia";
 $descricao = "Descrição da notícia";
 $imagem_url = "caminho/para/imagem.jpg";
-$id = indefinido;
+$id = "indefinido";
 ?>
 
 <a href="./pages/news.php?id=<?= $id ?>">
