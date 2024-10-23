@@ -3,11 +3,9 @@ session_start();
 
 include "../db/dbconnect.php";
 
-$school_name = empty($_POST['school']) ? 'null' : $_POST['school']
+$school_name = empty($_POST['school']) ? 'null' : $_POST['school'];
 
-include "../process/get_school_id.php";
-
-$full_name = $_POST['full_name'];
+$name = $_POST['name'];
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $email = $_POST['email'];
 $gender = $_POST['gender'];
@@ -18,8 +16,10 @@ $neighborhood = $_POST['neighborhood'];
 $city = $_POST['city'];
 $uf = $_POST['uf'];
 
-$query = "INSERT INTO users (full_name, password, email, gender, birthdate, school_level, cep, neighborhood, city, school, uf) " . 
-    "VALUES ('$full_name', '$password', '$email', '$gender', '$birthdate', '$school_level', '$cep', '$neighborhood', '$city', '$school_id', '$uf')";
+include "../process/get_school_id.php";
+
+$query = "INSERT INTO users (name, password, email, gender, birthdate, school_level, cep, neighborhood, city, school_id, uf) " . 
+    "VALUES ('$name', '$password', '$email', '$gender', '$birthdate', '$school_level', '$cep', '$neighborhood', '$city', '$school_id', '$uf')";
 
 $data = [];
 
