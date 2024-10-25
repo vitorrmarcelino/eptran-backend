@@ -388,6 +388,7 @@ CREATE TABLE game_data (
 CREATE TABLE posts (
     id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
+	create_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     description TEXT NOT NULL,
     content TEXT NOT NULL,
     user_id INT,

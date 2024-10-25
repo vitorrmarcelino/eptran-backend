@@ -6,7 +6,7 @@ session_start();
 $email = $_POST["email"];
 $password = $_POST["password"];
 
-$query = 'SELECT * FROM usuarios WHERE email = \'' . $email . '\'';
+$query = 'SELECT * FROM users WHERE email = \'' . $email . '\'';
 $result = mysqli_query($conn, $query);
 $userdata = mysqli_fetch_array($result);
 
