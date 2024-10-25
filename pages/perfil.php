@@ -1,5 +1,4 @@
 <?php include "../auth/login_required.php"; ?>
-<?php include "./process/access_register.php" ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 

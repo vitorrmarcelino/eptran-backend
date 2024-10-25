@@ -2,7 +2,7 @@
 
 include "../db/dbconnect.php";
 
-$id = 1;
+$id = $_POST["id"];
 
 $data = [];
 

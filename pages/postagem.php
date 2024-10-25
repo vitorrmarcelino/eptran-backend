@@ -1,4 +1,4 @@
-<?php include "./process/access_register.php" ?>
+<?php include "../process/access_register.php" ?>
 <!DOCTYPE html>
 <html lang="pt-br"></html>
 
@@ -17,20 +17,28 @@
     <img src="" alt="" id="image" />
     <p id="content"></p>
 
+    <br>
+    <br>
+
+    <div>
+        <?php
+
+        if (true) {
+            echo "<a href='./editar-postagem.php'></a>";
+        }
+
+        ?>
+    </div>
+
     <script>
         $(document).ready(() => {
             const searchParams = new URLSearchParams(window.location.search);
-
-            console.log(searchParams.get("id"))
 
             $.ajax({
                 type: "POST",
                 url: "../process/get_post.php",
                 data: { id: searchParams.get("id") },
                 dataType: "json",
-                contentType: false,
-                cache: false,
-                processData: false,
                 encode: true,
             }).done(({success, message, post}) => {
                 console.log(post)
