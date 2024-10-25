@@ -58,7 +58,7 @@
             echo "<p><strong>Texto:</strong> " . $row["content"] . "</p>";
             echo "<p><strong>Usuário ID:</strong> " . $row["user_id"] . " | <strong>Categoria:</strong> " . $row["category"] . "</p>";
             echo "<img src='" . $row["img_url"] . "' alt='Imagem da postagem' style='max-width: 100%; height: auto;'><br>";
-            echo "<small>Publicado em: " . $row["create_date"] . "</small><br><br>";
+            echo "<small>Publicado em: " . date("d/m/Y", strtotime($row["create_date"])) . "</small><br><br>";
         }
     } else {
         echo "Nenhuma postagem encontrada.";
