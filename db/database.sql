@@ -66,3 +66,34 @@ CREATE TABLE postagens_salvas (
 	FOREIGN KEY(usuario_id) REFERENCES usuarios(id), 
 	FOREIGN KEY(postagem_id) REFERENCES postagens(id)
 )
+
+/*Quiz*/
+CREATE TABLE Quiz (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question_text VARCHAR(255) NOT NULL,
+    answer_1 VARCHAR(255) NOT NULL,
+    answer_2 VARCHAR(255) NOT NULL,
+    answer_3 VARCHAR(255) NOT NULL,
+    answer_4 VARCHAR(255) NOT NULL,
+    wright int NOT NULL
+);
+
+--Perguntas do Quiz
+INSERT INTO Quiz(question_text,answer_1,answer_2,answer_3,answer_4,wright) 
+VALUES 
+        ("Qual seu nome?", 
+        "Caio","Guilherme","Higor","Kauan",0),
+
+        ("Qual o MEU nome?", 
+        "Caio","Guilherme","Higor","HTMLXYZ-Modelo 456",3)
+
+        ("Qual sua cor favorita?", 
+        "Vermelho","Azul","Amarelo","Verde",1),
+
+        ("Qual sua missão", 
+        "Matar tempo","Me formar","Achar o Cálice Sagrado","Ferrar com todo mundo",2),
+
+        ("Você pode passar agora?", 
+        "Sim","Não","Talvez","Não Sei",0);
+        
+

@@ -13,13 +13,15 @@
 
         <p id="question"></p>
 
-        <button id="answer1" onclick="Next()" value="0"> </button>
+        <p id="number"></p>
 
-        <button id="answer2" onclick="Next()" value="1"> </button>
+        <button id="answer1" onclick="one()" value="0"> </button>
 
-        <button id="answer3" onclick="Next()" value="2"> </button>
+        <button id="answer2" onclick="two()" value="1"> </button>
 
-        <button id="answer4" onclick="Next()" value="3"> </button>
+        <button id="answer3" onclick="three()" value="2"> </button>
+
+        <button id="answer4" onclick="four()" value="3"> </button>
     </div>
 
 </body>
@@ -27,22 +29,38 @@
 <script>
     //Variáveis
     let i = 0;
-    let j = 0;
     let pquestion = document.querySelector("#question")
     let button1 = document.querySelector("#answer1")
     let button2 = document.querySelector("#answer2")
     let button3 = document.querySelector("#answer3")
     let button4 = document.querySelector("#answer4")
+    let number = document.querySelector("#number")
+    let right_answer = 0;
+    let user_answer = 0;
 
+    function one() {
+        user_answer = 0;
+        next()
+    }
+    function two() {
+        user_answer = 1;
+        next()
+    }
+    function three() {
+        user_answer = 2;
+        next()
+    }
+    function four() {
+        user_answer = 3;
+        next()
+    }
 
     //Função que muda a questão
 
-    function Next() {
+    function next() {
         if (i < 5) {
             i += 1;
             console.log(i)
-
-            
 
             fetch("questions.json").then((response) => {
                 response.json().then((data) => {
@@ -52,6 +70,8 @@
                     button2.innerHTML = data.questions[i].answers[1]
                     button3.innerHTML = data.questions[i].answers[2]
                     button4.innerHTML = data.questions[i].answers[3]
+                    right_answer = data.questions[i].correct;
+
                 })
             })
         }
@@ -69,10 +89,9 @@
             button2.innerHTML = data.questions[i].answers[1]
             button3.innerHTML = data.questions[i].answers[2]
             button4.innerHTML = data.questions[i].answers[3]
+            right_answer = data.questions[i].correct;
         })
     })
-
-
 
 
 

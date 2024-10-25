@@ -34,8 +34,6 @@
     $(document).ready(() => {
         const searchParams = new URLSearchParams(window.location.search);
 
-        let news_id = 1;
-
         $.ajax({
             type: "POST",
             url: "../process/get_news.php",
