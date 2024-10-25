@@ -45,7 +45,7 @@
     <?php
     include "./db/dbconnect.php";
     
-    $query = "SELECT title, description, content, user_id, category, img_url, create_date 
+    $query = "SELECT id, title, description, content, user_id, category, img_url, create_date 
             FROM posts 
             ORDER BY create_date DESC 
             LIMIT 10";
@@ -53,12 +53,14 @@
     
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
+            echo "<a href='./pages/postagem.php?id=" . $row['id'] . "'>";
             echo "<h2>" . $row["title"] . "</h2>";
             echo "<p><strong>Descrição:</strong> " . $row["description"] . "</p>";
             echo "<p><strong>Texto:</strong> " . $row["content"] . "</p>";
             echo "<p><strong>Usuário ID:</strong> " . $row["user_id"] . " | <strong>Categoria:</strong> " . $row["category"] . "</p>";
             echo "<img src='" . $row["img_url"] . "' alt='Imagem da postagem' style='max-width: 100%; height: auto;'><br>";
             echo "<small>Publicado em: " . date("d/m/Y", strtotime($row["create_date"])) . "</small><br><br>";
+            echo "</a>";
         }
     } else {
         echo "Nenhuma postagem encontrada.";

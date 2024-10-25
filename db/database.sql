@@ -392,7 +392,7 @@ CREATE TABLE posts (
     description TEXT NOT NULL,
     content TEXT NOT NULL,
     user_id INT,
-    category ENUM('f1', 'f2', 'em') NULL,
+    category VARCHAR(255) NOT NULL,
     img_url VARCHAR(255) NOT NULL,
     FOREIGN KEY(user_id) REFERENCES users(id)
 );
