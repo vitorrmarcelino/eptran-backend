@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+<?php include "./process/access_register.php" ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -6,6 +7,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EPTRAN</title>
+    <style>
+        .post {
+            border: 1px solid black;
+            padding: .5rem;
+            width: fit-content;
+            height: fit-content;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,10 +26,6 @@
                 
                 <a href=\"./pages/sair.php\">
                     <button>Sair</button>
-                </a>
-                
-                <a href=\"./pages/postar.php\">
-                    <button>Postar Algo</button>
                 </a>";
             
             if ($_SESSION["userdata"]["adm"]) {
@@ -30,6 +35,10 @@
                 
                 <a href=\"./pages/relatorio.php\">
                     <button>Relatório</button>
+                </a>
+                
+                <a href=\"./pages/postar.php\">
+                    <button>Postar Algo</button>
                 </a>";
             }
         } else {
@@ -45,22 +54,24 @@
     <?php
     include "./db/dbconnect.php";
     
-    $query = "SELECT id, title, description, content, user_id, category, img_url, create_date 
-            FROM posts 
+    $query = "SELECT P.id, P.title, P.description, P.content, P.category, P.img_url, P.create_date, U.name 
+            FROM posts as P
+            inner join users as U
+            on P.user_id = U.id
             ORDER BY create_date DESC 
             LIMIT 10";
     $result = $conn->query($query);
     
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
+            echo "<div class='post'>";
             echo "<a href='./pages/postagem.php?id=" . $row['id'] . "'>";
             echo "<h2>" . $row["title"] . "</h2>";
-            echo "<p><strong>Descrição:</strong> " . $row["description"] . "</p>";
-            echo "<p><strong>Texto:</strong> " . $row["content"] . "</p>";
-            echo "<p><strong>Usuário ID:</strong> " . $row["user_id"] . " | <strong>Categoria:</strong> " . $row["category"] . "</p>";
+            echo "<p>" . $row["description"] . "</p>";
+            echo "<p>" . $row["name"] . " | " . date("d/m/Y", strtotime($row["create_date"])) . " | " . $row["category"] . "</p>";
             echo "<img src='" . $row["img_url"] . "' alt='Imagem da postagem' style='max-width: 100%; height: auto;'><br>";
-            echo "<small>Publicado em: " . date("d/m/Y", strtotime($row["create_date"])) . "</small><br><br>";
             echo "</a>";
+            echo "</div>";
         }
     } else {
         echo "Nenhuma postagem encontrada.";

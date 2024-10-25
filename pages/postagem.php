@@ -1,3 +1,4 @@
+<?php include "./process/access_register.php" ?>
 <!DOCTYPE html>
 <html lang="pt-br"></html>
 

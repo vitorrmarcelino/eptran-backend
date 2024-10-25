@@ -1,3 +1,4 @@
+<?php include "../auth/adm_required.php" ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
