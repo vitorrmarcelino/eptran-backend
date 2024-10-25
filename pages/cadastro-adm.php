@@ -48,6 +48,9 @@
                 url: "../process/adm_register.php",
                 data: formData,
                 dataType: "json",
+                contentType: false,
+                cache: false,
+                processData: false,
                 encode: true,
             }).done(({
                 message

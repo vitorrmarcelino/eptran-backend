@@ -148,6 +148,9 @@
                 url: "../process/update_user.php",
                 data: formData,
                 dataType: "json",
+                contentType: false,
+                cache: false,
+                processData: false,
                 encode: true,
             }).done(({
                 success,

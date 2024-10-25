@@ -25,6 +25,9 @@
             url: "../process/create_post.php",
             data: { news_id },
             dataType: "json",
+                contentType: false,
+                cache: false,
+                processData: false,
             encode: true,
         ).done(({success, message, {title, author, description, img_url, content}}) => {
             if (!success) {

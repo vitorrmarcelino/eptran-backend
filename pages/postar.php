@@ -52,6 +52,33 @@
 
         <button type="submit">Enviar Postagem</button>
     </form>
+
+    <script>
+    $(document).ready(() => {
+        $("form").submit((event) => {
+            let formData = new FormData(event.target);
+
+            $.ajax({
+                type: "POST",
+                url: "../process/create_post.php",
+                data: formData,
+                dataType: "json",
+                contentType: false,
+                cache: false,
+                processData: false,
+                encode: true,
+            }).done(({
+                success,
+                message
+            }) => {
+                alert(message);
+            });
+
+
+            event.preventDefault();
+        });
+    });
+    </script>
 </body>
 </html>
 

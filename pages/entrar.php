@@ -11,7 +11,7 @@
 
 <body>
     <h2>Entrar na Conta</h2>
-    <form action="../process/login.php" method="POST">
+    <form method="POST">
         <div>
             <label for="email">E-mail:</label>
             <input type="email" id="email" name="email" required>
@@ -49,12 +49,17 @@
                 url: "../process/login.php",
                 data: formData,
                 dataType: "json",
+                contentType: false,
+                cache: false,
+                processData: false,
                 encode: true,
             }).done(({
                 success,
                 message
             }) => {
+                console.log(success, message)
                 alert(message);
+
                 if (success) {
                     window.location.href = "..";
                 }

@@ -29,6 +29,9 @@
                 $.ajax({
                     type: "GET",
                     url: "../process/logout.php",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
                     encode: true,
                 })
 
