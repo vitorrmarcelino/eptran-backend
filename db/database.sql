@@ -68,18 +68,18 @@ CREATE TABLE postagens_salvas (
 )
 
 /*Quiz*/
-CREATE TABLE Quiz (
+CREATE TABLE quiz (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    question_text VARCHAR(255) NOT NULL,
+    question VARCHAR(255) NOT NULL,
     answer_1 VARCHAR(255) NOT NULL,
     answer_2 VARCHAR(255) NOT NULL,
     answer_3 VARCHAR(255) NOT NULL,
     answer_4 VARCHAR(255) NOT NULL,
-    wright int NOT NULL
+    right int NOT NULL
 );
 
 --Perguntas do Quiz
-INSERT INTO Quiz(question_text,answer_1,answer_2,answer_3,answer_4,wright) 
+INSERT INTO quiz(question,answer_1,answer_2,answer_3,answer_4,right) 
 VALUES 
         ("Qual seu nome?", 
         "Caio","Guilherme","Higor","Kauan",0),

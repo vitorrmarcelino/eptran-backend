@@ -28,8 +28,22 @@
 </body>
 
 <script>
-   $(document).ready(() => {
+   
+   $(document).ready() => {
+        $.ajax({
+            type: "POST",
+            url: "quiz_process.php",
+            dataType: "json",
+            encode: true,
+        }).done(({data}) => {
 
+            $(#question).html(question)
+            $(#answer1).html(answer1)
+            $(#answer2).html(answer2)
+            $(#answer3).html(answer3)
+            $(#answer4).html(answer4)
+
+        })
     
    }
 
