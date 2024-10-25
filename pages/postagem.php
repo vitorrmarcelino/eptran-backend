@@ -23,8 +23,8 @@
     <div>
         <?php
 
-        if (true) {
-            echo "<a href='./editar-postagem.php'></a>";
+        if (!empty($_GET['id']) && $_SESSION["userdata"]["adm"]) {
+            echo "<a href='./editar-postagem.php?id=" . $_GET['id'] . "'>Editar Postagem</a>";
         }
 
         ?>
@@ -41,9 +41,9 @@
                 dataType: "json",
                 encode: true,
             }).done(({success, message, post}) => {
-                console.log(post)
                 if (!success) {
                     alert(message);
+                    window.location.href = "..";
                     return;
                 }
 

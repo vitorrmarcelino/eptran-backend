@@ -18,7 +18,12 @@ try {
     $query->execute();
 
     $result = $query->get_result();
+    if (mysqli_num_rows($result) < 1) {
+        throw new Exception("Postagem não existente.");
+    }
+
     $newsdata = mysqli_fetch_assoc($result);
+
 
     //variáveis
     $data['post']['title'] = $newsdata['title'];
@@ -32,8 +37,12 @@ try {
     $data['success'] = true;  
     $data['message'] = 'Notícia carregada com sucesso!';
 } catch (Exception $err) {
-    $data['success'] = false;  
-    $data['message'] = 'Erro ao carregar notícia.';
+    $data['success'] = false;
+    if ($err->getMessage() == "Postagem não existente.") {
+        $data['message'] = "Postagem não existente.";
+    } else {
+        $data['message'] = 'Erro ao carregar notícia.';
+    }
     $data['post'] = null;
 }
 
