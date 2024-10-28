@@ -75,17 +75,17 @@ CREATE TABLE quiz (
     answer_2 VARCHAR(255) NOT NULL,
     answer_3 VARCHAR(255) NOT NULL,
     answer_4 VARCHAR(255) NOT NULL,
-    right int NOT NULL
+    correct int NOT NULL
 );
 
---Perguntas do Quiz
-INSERT INTO quiz(question,answer_1,answer_2,answer_3,answer_4,right) 
+/*Perguntas do Quiz*/
+INSERT INTO quiz(question,answer_1,answer_2,answer_3,answer_4,correct) 
 VALUES 
         ("Qual seu nome?", 
         "Caio","Guilherme","Higor","Kauan",0),
 
         ("Qual o MEU nome?", 
-        "Caio","Guilherme","Higor","HTMLXYZ-Modelo 456",3)
+        "Caio","Guilherme","Higor","HTMLXYZ-Modelo 456",3),
 
         ("Qual sua cor favorita?", 
         "Vermelho","Azul","Amarelo","Verde",1),
