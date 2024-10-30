@@ -16,6 +16,15 @@ try {
 
     $data["success"] = $question_data;
 
+    $data["correct"] = $question_data['correct'];
+
+    //Salvando respostas certas e erradas
+    if ($chosen == $data["correct"]) {
+        $_SESSION["quiz"]["right"] += 1;
+    } else {
+        $_SESSION["quiz"]["wrong"] += 1;
+    };
+
     $_SESSION["quiz"]["id"] += 1;
 } catch (Exception $err) {
     $data["success"] = $err;

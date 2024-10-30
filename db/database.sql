@@ -65,7 +65,7 @@ CREATE TABLE postagens_salvas (
     postagem_id INT NOT NULL,
 	FOREIGN KEY(usuario_id) REFERENCES usuarios(id), 
 	FOREIGN KEY(postagem_id) REFERENCES postagens(id)
-)
+);
 
 /*Quiz*/
 CREATE TABLE quiz (

@@ -11,9 +11,10 @@
 <body>
 
     <div>
-        <p id="question"></p>
 
         <p id="number"></p>
+
+        <p id="question"></p>
 
         <button class="answer-btn" id="answer1" value="0"> </button>
 
@@ -22,47 +23,50 @@
         <button class="answer-btn" id="answer3" value="2"> </button>
 
         <button class="answer-btn" id="answer4" value="3"> </button>
+
     </div>
 
-<script>
-   $(document).ready(() => {
+    <script>
+        $(document).ready(() => {
 
-        getQuestion()
+            getQuestion()
 
-        $(".answer-btn").each((i, btn) => {
-            $(btn).on("click", () => {
-                console.log()
-                $.ajax({
-                    type: "POST",
-                    url: "./actions/submit_answer.php",
-                    data: {
-                        chosen: $(btn).val()
-                    },
-                    dataType: "json",
-                    encode: true,
-                }).done((data) => {
-                    getQuestion()
+            $(".answer-btn").each((i, btn) => {
+                $(btn).on("click", () => {
+                    console.log()
+                    $.ajax({
+                        type: "POST",
+                        url: "./actions/submit_answer.php",
+                        data: {
+                            chosen: $(btn).val()
+                        },
+                        dataType: "json",
+                        encode: true,
+                    }).done((data) => {
+                        console.log(data.success)
+                        getQuestion()
+                    })
                 })
             })
-        })
-    
-   })
 
-    function getQuestion() {
-        $.ajax({
+        })
+
+        function getQuestion() {
+            $.ajax({
                 type: "POST",
                 url: "./actions/get_question.php",
                 dataType: "json",
                 encode: true,
             }).done((data) => {
+                $("#number").html(data.id)
                 $("#question").html(data.question)
                 $("#answer1").html(data.answer1)
                 $("#answer2").html(data.answer2)
                 $("#answer3").html(data.answer3)
                 $("#answer4").html(data.answer4)
             })
-    }
-</script>
+        }
+    </script>
 
 </body>
 
