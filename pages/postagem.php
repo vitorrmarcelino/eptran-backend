@@ -24,7 +24,7 @@
         <?php
 
         if (!empty($_GET['id']) && $_SESSION["userdata"]["adm"]) {
-            echo "<a href='./editar-postagem.php?id=" . $_GET['id'] . "'>Editar Postagem</a>";
+            echo "<a href='./atualizar-postagem.php?id=" . $_GET['id'] . "'>Atualizar Postagem</a>";
         }
 
         ?>
