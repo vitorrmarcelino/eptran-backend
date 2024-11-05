@@ -404,3 +404,51 @@ CREATE TABLE saved_posts (
 	FOREIGN KEY(user_id) REFERENCES users(id), 
 	FOREIGN KEY(post_id) REFERENCES posts(id)
 );
+
+-- CREATE TABLE quiz (
+--     id INT PRIMARY KEY AUTO_INCREMENT,
+--     title VARCHAR(255) NOT NULL,
+--     description TEXT NOT NULL,
+-- );
+
+-- INSERT INTO quiz (title, description) VALUES ("Quiz de Placas", "Aprenda sobre placas de trânsito.");
+
+-- CREATE TABLE quiz_question (
+--     id INT PRIMARY KEY AUTO_INCREMENT,
+--     question_num INT NOT NULL,
+--     question VARCHAR(255) NOT NULL,
+--     correct TEXT NOT NULL,
+--     quiz_id INT NOT NULL,
+--     FOREIGN KEY(quiz_id) REFERENCES quiz(id)
+-- );
+
+-- CREATE TABLE quiz_question_answers (
+--     id INT PRIMARY KEY AUTO_INCREMENT,
+--     answer_num INT NOT NULL,
+--     answer TEXT NOT NULL,
+--     correct BOOLEAN DEFAULT FALSE,
+--     question_id INT NOT NULL,
+--     FOREIGN KEY(question_id) REFERENCES quiz_question(id)
+-- );
+
+CREATE TABLE quizes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    theme VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE quiz_questions (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    question VARCHAR(255) NOT NULL,
+    correct INT NOT NULL,
+    quiz_id INT NOT NULL,
+    FOREIGN KEY(quiz_id) REFERENCES quizes(id)
+);
+
+CREATE TABLE quiz_question_answers (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    answer VARCHAR(255) NOT NULL,
+    num INT NOT NULL,
+    question_id INT NOT NULL,
+    FOREIGN KEY(question_id) REFERENCES quiz_questions(id)
+)
