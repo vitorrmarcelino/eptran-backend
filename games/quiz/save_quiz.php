@@ -2,6 +2,8 @@
 
 include "../../db/dbconnect.php";
 
+header("Content-type: application/json; charset=utf-8");
+
 $json_input = file_get_contents('php://input');
 $quiz = json_decode($json_input);
 
@@ -45,7 +47,7 @@ foreach ($questions as $question) {
 }
 
 $data = [];
-$data["message"] = "Quiz created successfully"
+$data["message"] = "Quiz created successfully";
 
 echo json_encode($data);
 

@@ -2,9 +2,11 @@
 
 include "../../db/dbconnect.php";
 
+header("Content-type: application/json; charset=utf-8");
+
 $json_input = file_get_contents('php://input');
 $data_input = json_decode($json_input);
-$id = $data_input->id;
+$id = empty($_GET["id"]) ? $data_input->id : $_GET["id"];
 
 $data;
 
@@ -36,7 +38,6 @@ $query_answer->bind_param("i", $qid);
 
 while ($row = $question_result->fetch_assoc()) {
     $question = [];
-    $question["id"] = $row["id"];
     $question["question"] = $row["question"];
     $question["correct"] = $row["correct"];
 
