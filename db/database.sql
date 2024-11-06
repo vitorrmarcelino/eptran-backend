@@ -451,4 +451,13 @@ CREATE TABLE quiz_question_answers (
     num INT NOT NULL,
     question_id INT NOT NULL,
     FOREIGN KEY(question_id) REFERENCES quiz_questions(id)
-)
+);
+
+CREATE TABLE quiz_user_data (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    best_score DOUBLE NOT NULL,
+    user_id INT NOT NULL,
+    quiz_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (quiz_id) REFERENCES quizes(id)
+);
