@@ -2,6 +2,8 @@
 
 include "../cors.php";
 
+header("Content-type: application/json; charset=utf-8");
+
 $json_input = file_get_contents("php://input");
 $data_input = json_decode($json_input);
 
