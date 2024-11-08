@@ -408,18 +408,20 @@ CREATE TABLE saved_posts (
 CREATE TABLE quizes (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
-    theme VARCHAR(255) NOT NULL
+    theme VARCHAR(255) NOT NULL,
+    img_url VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE quiz_questions (
     id INT PRIMARY KEY AUTO_INCREMENT,
     question VARCHAR(255) NOT NULL,
     correct INT NOT NULL,
+    img_url VARCHAR(255) NULL,
     quiz_id INT NOT NULL,
     FOREIGN KEY(quiz_id) REFERENCES quizes(id)
 );
 
-CREATE TABLE quiz_question_answers (
+CREATE TABLE quiz_answers (
     id INT PRIMARY KEY AUTO_INCREMENT,
     answer VARCHAR(255) NOT NULL,
     num INT NOT NULL,
